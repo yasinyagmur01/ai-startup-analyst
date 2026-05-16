@@ -1,0 +1,1672 @@
+[
+    {
+        "scenario": "Pure Hardware / Toy",
+        "pitch": "A mechanical, non-electronic premium wooden educational puzzle toy for kids.",
+        "buzzword_warning": null,
+        "questions_generated": [
+            {
+                "question": "What is your startup idea and what specific problem does it solve?",
+                "guide": "Example: 'We are building an autonomous accounting SaaS for SMBs focusing on ledger reconciliation...'"
+            },
+            {
+                "question": "Who is your exact target niche market and user base initially?",
+                "guide": "Example: 'Our initial target is dental clinics in the US with 1-5 practitioners...'"
+            },
+            {
+                "question": "Who are your 2-3 biggest competitors currently trying to solve this problem, and how will you differentiate?",
+                "guide": "Example: 'We compete with X and Y. We differentiate by having 10x faster integrations using our custom proxy API...'"
+            }
+        ],
+        "market_analysis": {
+            "Market_Metrics": {
+                "TAM": {
+                    "value": "$500M – $2B",
+                    "scope": "Global sector ceiling",
+                    "source_assumption": "Regex-extracted from DuckDuckGo search corpus — LLM validation unavailable"
+                },
+                "SAM": {
+                    "value": "5–15% of TAM (based on geographic population and internet penetration)",
+                    "scope": "We plan to address this by focusing heavily on our core demographic and optimizing our supply chain in Pure Hardware sectors.",
+                    "source_assumption": "Population-ratio assumption: target country's share of global addressable market"
+                },
+                "SOM": {
+                    "value": "0.5–2% of SAM",
+                    "scope": "Year 1 MVP launch",
+                    "source_assumption": "Standard SaaS/marketplace benchmark conversion funnel: 0.5% – 2%"
+                },
+                "CAGR": {
+                    "value": "12% (industry average assumption)",
+                    "period": "2024–2030",
+                    "source_assumption": "Regex-extracted from search corpus"
+                },
+                "Market_Density": "Red Ocean (High Competition)"
+            },
+            "Competitor_Flaws": [
+                {
+                    "competitor": "We plan to address this by focusing heavily on our core demographic and optimizi",
+                    "known_weakness": "LLM call failed — insufficient data for detailed competitor weakness analysis",
+                    "exploit_window": "Manual research required"
+                }
+            ],
+            "Regulatory_Risks": [
+                {
+                    "regulation": "KVKK (Kişisel Verilerin Korunması Kanunu) — mandatory data localisation and explicit consent flows required before any B2C data processing.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                },
+                {
+                    "regulation": "BDDK/SPK licencing — fintech and payment solutions require explicit regulatory approval; typical timeline 6-18 months.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                },
+                {
+                    "regulation": "Import tariffs & ÖTV — hardware/IoT devices face up to 25% import duties, compressing unit economics severely.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                }
+            ],
+            "_meta": {
+                "country_detected": "turkey",
+                "vertical_classified": "hardware IoT robotics",
+                "search_queries_used": [
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo market size report 2025 2026 filetype:pdf",
+                    "site:statista.com hardware IoT robotics We plan to address this by focusing heavily on our core demo turkey market revenue",
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo TAM SAM SOM market research 2025 site:grandviewresearch.com OR site:mordorintelligence.com",
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo CAGR compound annual growth rate 2024 2030 market forecast",
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo competitor market share analysis turkey 2024",
+                    "hardware IoT robotics regulatory compliance turkey legal requirements 2024 2025"
+                ],
+                "corpus_length_chars": 620,
+                "lang": "en"
+            }
+        },
+        "mvp_analysis": {
+            "Complexity_Score": "8/10",
+            "Complexity_Reasoning": "High technical complexity due to AI/LLM integration (API dependencies, prompt engineering, context management).",
+            "Time_to_Market": "2-3 Months",
+            "MVP_Focus_Features": [
+                "Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API)."
+            ],
+            "MVP_Cut_Features": [
+                "User authentication (Login/Signup - test without passwords initially).",
+                "Saving chat history to database (Session state is enough for now).",
+                "Custom model training (Use prompt engineering first instead of fine-tuning)."
+            ],
+            "Tech_Recommendations": [
+                "🐍 **Backend/Core**: Python (FastAPI or Streamlit)",
+                "🧠 **AI Integration**: LangChain or direct OpenAI/Anthropic API",
+                "🌐 **Frontend**: Streamlit (Zero frontend effort) or Vercel + Next.js (Better UX)",
+                "🗄️ **Database**: Supabase (PostgreSQL) or Firebase"
+            ],
+            "Founder_Sprint_Plan": [
+                {
+                    "week": "Week 1 (Prep & Basic Setup)",
+                    "tasks": [
+                        "Conduct short interviews with your target audience (min 5 people) about the product idea.",
+                        "Choose one of the recommended tools (Python (FastAPI or Streamlit)) and create an account.",
+                        "Buy a domain and set up a simple landing page."
+                    ]
+                },
+                {
+                    "week": "Week 2 (Core MVP Development)",
+                    "tasks": [
+                        "Focus feature: Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API).",
+                        "Absolutely exclude all features we cut ('nice-to-have') from development.",
+                        "Don't aim for design perfection, focus solely on functionality."
+                    ]
+                },
+                {
+                    "week": "Week 3 (Testing & Early Validation)",
+                    "tasks": [
+                        "Test the product yourself and with 2-3 people from your circle.",
+                        "Fix critical bugs, just make the interface understandable.",
+                        "Add a manual payment or 'lead collection' step."
+                    ]
+                },
+                {
+                    "week": "Week 4 (Go-Live & Launch)",
+                    "tasks": [
+                        "Share your MVP on Reddit, Product Hunt, X, or industry LinkedIn groups.",
+                        "Set up a communication channel (Discord/WhatsApp) for instant feedback from early users.",
+                        "Decide whether to pivot or persevere based on reactions."
+                    ]
+                }
+            ]
+        },
+        "finance_analysis": {
+            "LTV_CAC_Estimate": "2.5x",
+            "LTV_CAC_Comment": "Close to industry standards (2.5x - 3x). May require improvement.",
+            "Capital_Intensity": "Medium",
+            "Investment_Score": 55,
+            "Red_Flags": [
+                "⚠️ Estimated LTV/CAC ratio (2.5x) is below the VC ideal of 3x. Unit economics might be challenging.",
+                "🚨 Overall Investment Score is low. Bootstrapping is recommended before seeking VC funding."
+            ]
+        }
+    },
+    {
+        "scenario": "DeepTech / Robotics",
+        "pitch": "Autonomous Underwater Vehicles (AUVs) utilizing ROS2 and DDS for deep-sea pipeline maintenance.",
+        "buzzword_warning": null,
+        "questions_generated": [
+            {
+                "question": "What is your startup idea and what specific problem does it solve?",
+                "guide": "Example: 'We are building an autonomous accounting SaaS for SMBs focusing on ledger reconciliation...'"
+            },
+            {
+                "question": "Who is your exact target niche market and user base initially?",
+                "guide": "Example: 'Our initial target is dental clinics in the US with 1-5 practitioners...'"
+            },
+            {
+                "question": "Who are your 2-3 biggest competitors currently trying to solve this problem, and how will you differentiate?",
+                "guide": "Example: 'We compete with X and Y. We differentiate by having 10x faster integrations using our custom proxy API...'"
+            }
+        ],
+        "market_analysis": {
+            "Market_Metrics": {
+                "TAM": {
+                    "value": "$500M – $2B",
+                    "scope": "Global sector ceiling",
+                    "source_assumption": "Regex-extracted from DuckDuckGo search corpus — LLM validation unavailable"
+                },
+                "SAM": {
+                    "value": "5–15% of TAM (based on geographic population and internet penetration)",
+                    "scope": "We plan to address this by focusing heavily on our core demographic and optimizing our supply chain in DeepTech sectors.",
+                    "source_assumption": "Population-ratio assumption: target country's share of global addressable market"
+                },
+                "SOM": {
+                    "value": "0.5–2% of SAM",
+                    "scope": "Year 1 MVP launch",
+                    "source_assumption": "Standard SaaS/marketplace benchmark conversion funnel: 0.5% – 2%"
+                },
+                "CAGR": {
+                    "value": "12% (industry average assumption)",
+                    "period": "2024–2030",
+                    "source_assumption": "Regex-extracted from search corpus"
+                },
+                "Market_Density": "Red Ocean (High Competition)"
+            },
+            "Competitor_Flaws": [
+                {
+                    "competitor": "We plan to address this by focusing heavily on our core demographic and optimizi",
+                    "known_weakness": "LLM call failed — insufficient data for detailed competitor weakness analysis",
+                    "exploit_window": "Manual research required"
+                }
+            ],
+            "Regulatory_Risks": [
+                {
+                    "regulation": "SEC/FINRA registration — fintech platforms offering securities-adjacent products face federal registration; broker-dealer licence costs $50K-$200K upfront.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                },
+                {
+                    "regulation": "State-level money-transmitter licences — payments startups need licences in all 50 states; typical cost $500K+ cumulative.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                },
+                {
+                    "regulation": "FDA 510(k) clearance — health-tech hardware/software as medical device (SaMD) requires FDA clearance; median timeline 12 months.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                }
+            ],
+            "_meta": {
+                "country_detected": "usa",
+                "vertical_classified": "deep tech AI ML",
+                "search_queries_used": [
+                    "deep tech AI ML We plan to address this by focusing heavily on our core demo market size report 2025 2026 filetype:pdf",
+                    "site:statista.com deep tech AI ML We plan to address this by focusing heavily on our core demo usa market revenue",
+                    "deep tech AI ML We plan to address this by focusing heavily on our core demo TAM SAM SOM market research 2025 site:grandviewresearch.com OR site:mordorintelligence.com",
+                    "deep tech AI ML We plan to address this by focusing heavily on our core demo CAGR compound annual growth rate 2024 2030 market forecast",
+                    "deep tech AI ML We plan to address this by focusing heavily on our core demo competitor market share analysis usa 2024",
+                    "deep tech AI ML regulatory compliance usa legal requirements 2024 2025"
+                ],
+                "corpus_length_chars": 656,
+                "lang": "en"
+            }
+        },
+        "mvp_analysis": {
+            "Complexity_Score": "8/10",
+            "Complexity_Reasoning": "High technical complexity due to AI/LLM integration (API dependencies, prompt engineering, context management).",
+            "Time_to_Market": "2-3 Months",
+            "MVP_Focus_Features": [
+                "Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API)."
+            ],
+            "MVP_Cut_Features": [
+                "User authentication (Login/Signup - test without passwords initially).",
+                "Saving chat history to database (Session state is enough for now).",
+                "Custom model training (Use prompt engineering first instead of fine-tuning)."
+            ],
+            "Tech_Recommendations": [
+                "🐍 **Backend/Core**: Python (FastAPI or Streamlit)",
+                "🧠 **AI Integration**: LangChain or direct OpenAI/Anthropic API",
+                "🌐 **Frontend**: Streamlit (Zero frontend effort) or Vercel + Next.js (Better UX)",
+                "🗄️ **Database**: Supabase (PostgreSQL) or Firebase"
+            ],
+            "Founder_Sprint_Plan": [
+                {
+                    "week": "Week 1 (Prep & Basic Setup)",
+                    "tasks": [
+                        "Conduct short interviews with your target audience (min 5 people) about the product idea.",
+                        "Choose one of the recommended tools (Python (FastAPI or Streamlit)) and create an account.",
+                        "Buy a domain and set up a simple landing page."
+                    ]
+                },
+                {
+                    "week": "Week 2 (Core MVP Development)",
+                    "tasks": [
+                        "Focus feature: Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API).",
+                        "Absolutely exclude all features we cut ('nice-to-have') from development.",
+                        "Don't aim for design perfection, focus solely on functionality."
+                    ]
+                },
+                {
+                    "week": "Week 3 (Testing & Early Validation)",
+                    "tasks": [
+                        "Test the product yourself and with 2-3 people from your circle.",
+                        "Fix critical bugs, just make the interface understandable.",
+                        "Add a manual payment or 'lead collection' step."
+                    ]
+                },
+                {
+                    "week": "Week 4 (Go-Live & Launch)",
+                    "tasks": [
+                        "Share your MVP on Reddit, Product Hunt, X, or industry LinkedIn groups.",
+                        "Set up a communication channel (Discord/WhatsApp) for instant feedback from early users.",
+                        "Decide whether to pivot or persevere based on reactions."
+                    ]
+                }
+            ]
+        },
+        "finance_analysis": {
+            "LTV_CAC_Estimate": "2.5x",
+            "LTV_CAC_Comment": "Close to industry standards (2.5x - 3x). May require improvement.",
+            "Capital_Intensity": "Medium",
+            "Investment_Score": 55,
+            "Red_Flags": [
+                "⚠️ Estimated LTV/CAC ratio (2.5x) is below the VC ideal of 3x. Unit economics might be challenging.",
+                "🚨 Overall Investment Score is low. Bootstrapping is recommended before seeking VC funding."
+            ]
+        }
+    },
+    {
+        "scenario": "Crypto / Cyber-Physical",
+        "pitch": "Edge-AI biometric hardware tokens sealing data transmission via Physical Unclonable Functions (PUF).",
+        "buzzword_warning": null,
+        "questions_generated": [
+            {
+                "question": "What is your startup idea and what specific problem does it solve?",
+                "guide": "Example: 'We are building an autonomous accounting SaaS for SMBs focusing on ledger reconciliation...'"
+            },
+            {
+                "question": "Who is your exact target niche market and user base initially?",
+                "guide": "Example: 'Our initial target is dental clinics in the US with 1-5 practitioners...'"
+            },
+            {
+                "question": "Who are your 2-3 biggest competitors currently trying to solve this problem, and how will you differentiate?",
+                "guide": "Example: 'We compete with X and Y. We differentiate by having 10x faster integrations using our custom proxy API...'"
+            }
+        ],
+        "market_analysis": {
+            "Market_Metrics": {
+                "TAM": {
+                    "value": "$500M – $2B",
+                    "scope": "Global sector ceiling",
+                    "source_assumption": "Regex-extracted from DuckDuckGo search corpus — LLM validation unavailable"
+                },
+                "SAM": {
+                    "value": "5–15% of TAM (based on geographic population and internet penetration)",
+                    "scope": "We plan to address this by focusing heavily on our core demographic and optimizing our supply chain in Crypto sectors.",
+                    "source_assumption": "Population-ratio assumption: target country's share of global addressable market"
+                },
+                "SOM": {
+                    "value": "0.5–2% of SAM",
+                    "scope": "Year 1 MVP launch",
+                    "source_assumption": "Standard SaaS/marketplace benchmark conversion funnel: 0.5% – 2%"
+                },
+                "CAGR": {
+                    "value": "12% (industry average assumption)",
+                    "period": "2024–2030",
+                    "source_assumption": "Regex-extracted from search corpus"
+                },
+                "Market_Density": "Red Ocean (High Competition)"
+            },
+            "Competitor_Flaws": [
+                {
+                    "competitor": "We plan to address this by focusing heavily on our core demographic and optimizi",
+                    "known_weakness": "LLM call failed — insufficient data for detailed competitor weakness analysis",
+                    "exploit_window": "Manual research required"
+                }
+            ],
+            "Regulatory_Risks": [
+                {
+                    "regulation": "KVKK (Kişisel Verilerin Korunması Kanunu) — mandatory data localisation and explicit consent flows required before any B2C data processing.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                },
+                {
+                    "regulation": "BDDK/SPK licencing — fintech and payment solutions require explicit regulatory approval; typical timeline 6-18 months.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                },
+                {
+                    "regulation": "Import tariffs & ÖTV — hardware/IoT devices face up to 25% import duties, compressing unit economics severely.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                }
+            ],
+            "_meta": {
+                "country_detected": "turkey",
+                "vertical_classified": "hardware IoT robotics",
+                "search_queries_used": [
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo market size report 2025 2026 filetype:pdf",
+                    "site:statista.com hardware IoT robotics We plan to address this by focusing heavily on our core demo turkey market revenue",
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo TAM SAM SOM market research 2025 site:grandviewresearch.com OR site:mordorintelligence.com",
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo CAGR compound annual growth rate 2024 2030 market forecast",
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo competitor market share analysis turkey 2024",
+                    "hardware IoT robotics regulatory compliance turkey legal requirements 2024 2025"
+                ],
+                "corpus_length_chars": 0,
+                "lang": "en"
+            }
+        },
+        "mvp_analysis": {
+            "Complexity_Score": "8/10",
+            "Complexity_Reasoning": "High technical complexity due to AI/LLM integration (API dependencies, prompt engineering, context management).",
+            "Time_to_Market": "2-3 Months",
+            "MVP_Focus_Features": [
+                "Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API)."
+            ],
+            "MVP_Cut_Features": [
+                "User authentication (Login/Signup - test without passwords initially).",
+                "Saving chat history to database (Session state is enough for now).",
+                "Custom model training (Use prompt engineering first instead of fine-tuning)."
+            ],
+            "Tech_Recommendations": [
+                "🐍 **Backend/Core**: Python (FastAPI or Streamlit)",
+                "🧠 **AI Integration**: LangChain or direct OpenAI/Anthropic API",
+                "🌐 **Frontend**: Streamlit (Zero frontend effort) or Vercel + Next.js (Better UX)",
+                "🗄️ **Database**: Supabase (PostgreSQL) or Firebase"
+            ],
+            "Founder_Sprint_Plan": [
+                {
+                    "week": "Week 1 (Prep & Basic Setup)",
+                    "tasks": [
+                        "Conduct short interviews with your target audience (min 5 people) about the product idea.",
+                        "Choose one of the recommended tools (Python (FastAPI or Streamlit)) and create an account.",
+                        "Buy a domain and set up a simple landing page."
+                    ]
+                },
+                {
+                    "week": "Week 2 (Core MVP Development)",
+                    "tasks": [
+                        "Focus feature: Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API).",
+                        "Absolutely exclude all features we cut ('nice-to-have') from development.",
+                        "Don't aim for design perfection, focus solely on functionality."
+                    ]
+                },
+                {
+                    "week": "Week 3 (Testing & Early Validation)",
+                    "tasks": [
+                        "Test the product yourself and with 2-3 people from your circle.",
+                        "Fix critical bugs, just make the interface understandable.",
+                        "Add a manual payment or 'lead collection' step."
+                    ]
+                },
+                {
+                    "week": "Week 4 (Go-Live & Launch)",
+                    "tasks": [
+                        "Share your MVP on Reddit, Product Hunt, X, or industry LinkedIn groups.",
+                        "Set up a communication channel (Discord/WhatsApp) for instant feedback from early users.",
+                        "Decide whether to pivot or persevere based on reactions."
+                    ]
+                }
+            ]
+        },
+        "finance_analysis": {
+            "LTV_CAC_Estimate": "2.5x",
+            "LTV_CAC_Comment": "Close to industry standards (2.5x - 3x). May require improvement.",
+            "Capital_Intensity": "Medium",
+            "Investment_Score": 55,
+            "Red_Flags": [
+                "⚠️ Estimated LTV/CAC ratio (2.5x) is below the VC ideal of 3x. Unit economics might be challenging.",
+                "🚨 Overall Investment Score is low. Bootstrapping is recommended before seeking VC funding."
+            ]
+        }
+    },
+    {
+        "scenario": "Pure SaaS / B2B",
+        "pitch": "Multi-tenant automated tax reconciliation engine for cross-border e-commerce vendors.",
+        "buzzword_warning": null,
+        "questions_generated": [
+            {
+                "question": "What is your startup idea and what specific problem does it solve?",
+                "guide": "Example: 'We are building an autonomous accounting SaaS for SMBs focusing on ledger reconciliation...'"
+            },
+            {
+                "question": "Who is your exact target niche market and user base initially?",
+                "guide": "Example: 'Our initial target is dental clinics in the US with 1-5 practitioners...'"
+            },
+            {
+                "question": "Who are your 2-3 biggest competitors currently trying to solve this problem, and how will you differentiate?",
+                "guide": "Example: 'We compete with X and Y. We differentiate by having 10x faster integrations using our custom proxy API...'"
+            }
+        ],
+        "market_analysis": {
+            "Market_Metrics": {
+                "TAM": {
+                    "value": "$500M – $2B",
+                    "scope": "Global sector ceiling",
+                    "source_assumption": "Regex-extracted from DuckDuckGo search corpus — LLM validation unavailable"
+                },
+                "SAM": {
+                    "value": "5–15% of TAM (based on geographic population and internet penetration)",
+                    "scope": "We plan to address this by focusing heavily on our core demographic and optimizing our supply chain in Pure SaaS sectors.",
+                    "source_assumption": "Population-ratio assumption: target country's share of global addressable market"
+                },
+                "SOM": {
+                    "value": "0.5–2% of SAM",
+                    "scope": "Year 1 MVP launch",
+                    "source_assumption": "Standard SaaS/marketplace benchmark conversion funnel: 0.5% – 2%"
+                },
+                "CAGR": {
+                    "value": "12% (industry average assumption)",
+                    "period": "2024–2030",
+                    "source_assumption": "Regex-extracted from search corpus"
+                },
+                "Market_Density": "Red Ocean (High Competition)"
+            },
+            "Competitor_Flaws": [
+                {
+                    "competitor": "We plan to address this by focusing heavily on our core demographic and optimizi",
+                    "known_weakness": "LLM call failed — insufficient data for detailed competitor weakness analysis",
+                    "exploit_window": "Manual research required"
+                }
+            ],
+            "Regulatory_Risks": [
+                {
+                    "regulation": "No specific regulatory data for this geography. Defaulting to GDPR baseline.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                }
+            ],
+            "_meta": {
+                "country_detected": "global",
+                "vertical_classified": "SaaS B2B software",
+                "search_queries_used": [
+                    "SaaS B2B software We plan to address this by focusing heavily on our core demo market size report 2025 2026 filetype:pdf",
+                    "site:statista.com SaaS B2B software We plan to address this by focusing heavily on our core demo global market revenue",
+                    "SaaS B2B software We plan to address this by focusing heavily on our core demo TAM SAM SOM market research 2025 site:grandviewresearch.com OR site:mordorintelligence.com",
+                    "SaaS B2B software We plan to address this by focusing heavily on our core demo CAGR compound annual growth rate 2024 2030 market forecast",
+                    "SaaS B2B software We plan to address this by focusing heavily on our core demo competitor market share analysis global 2024",
+                    "SaaS B2B software regulatory compliance global legal requirements 2024 2025"
+                ],
+                "corpus_length_chars": 722,
+                "lang": "en"
+            }
+        },
+        "mvp_analysis": {
+            "Complexity_Score": "8/10",
+            "Complexity_Reasoning": "High technical complexity due to AI/LLM integration (API dependencies, prompt engineering, context management).",
+            "Time_to_Market": "2-3 Months",
+            "MVP_Focus_Features": [
+                "Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API)."
+            ],
+            "MVP_Cut_Features": [
+                "User authentication (Login/Signup - test without passwords initially).",
+                "Saving chat history to database (Session state is enough for now).",
+                "Custom model training (Use prompt engineering first instead of fine-tuning)."
+            ],
+            "Tech_Recommendations": [
+                "🐍 **Backend/Core**: Python (FastAPI or Streamlit)",
+                "🧠 **AI Integration**: LangChain or direct OpenAI/Anthropic API",
+                "🌐 **Frontend**: Streamlit (Zero frontend effort) or Vercel + Next.js (Better UX)",
+                "🗄️ **Database**: Supabase (PostgreSQL) or Firebase"
+            ],
+            "Founder_Sprint_Plan": [
+                {
+                    "week": "Week 1 (Prep & Basic Setup)",
+                    "tasks": [
+                        "Conduct short interviews with your target audience (min 5 people) about the product idea.",
+                        "Choose one of the recommended tools (Python (FastAPI or Streamlit)) and create an account.",
+                        "Buy a domain and set up a simple landing page."
+                    ]
+                },
+                {
+                    "week": "Week 2 (Core MVP Development)",
+                    "tasks": [
+                        "Focus feature: Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API).",
+                        "Absolutely exclude all features we cut ('nice-to-have') from development.",
+                        "Don't aim for design perfection, focus solely on functionality."
+                    ]
+                },
+                {
+                    "week": "Week 3 (Testing & Early Validation)",
+                    "tasks": [
+                        "Test the product yourself and with 2-3 people from your circle.",
+                        "Fix critical bugs, just make the interface understandable.",
+                        "Add a manual payment or 'lead collection' step."
+                    ]
+                },
+                {
+                    "week": "Week 4 (Go-Live & Launch)",
+                    "tasks": [
+                        "Share your MVP on Reddit, Product Hunt, X, or industry LinkedIn groups.",
+                        "Set up a communication channel (Discord/WhatsApp) for instant feedback from early users.",
+                        "Decide whether to pivot or persevere based on reactions."
+                    ]
+                }
+            ]
+        },
+        "finance_analysis": {
+            "LTV_CAC_Estimate": "2.5x",
+            "LTV_CAC_Comment": "Close to industry standards (2.5x - 3x). May require improvement.",
+            "Capital_Intensity": "Medium",
+            "Investment_Score": 55,
+            "Red_Flags": [
+                "⚠️ Estimated LTV/CAC ratio (2.5x) is below the VC ideal of 3x. Unit economics might be challenging.",
+                "🚨 Overall Investment Score is low. Bootstrapping is recommended before seeking VC funding."
+            ]
+        }
+    },
+    {
+        "scenario": "Consumer IoT / Hardware",
+        "pitch": "Smart botanic workspace humidifiers checking soil moisture via BLE and automated watering lines.",
+        "buzzword_warning": null,
+        "questions_generated": [
+            {
+                "question": "What is your startup idea and what specific problem does it solve?",
+                "guide": "Example: 'We are building an autonomous accounting SaaS for SMBs focusing on ledger reconciliation...'"
+            },
+            {
+                "question": "Who is your exact target niche market and user base initially?",
+                "guide": "Example: 'Our initial target is dental clinics in the US with 1-5 practitioners...'"
+            },
+            {
+                "question": "Who are your 2-3 biggest competitors currently trying to solve this problem, and how will you differentiate?",
+                "guide": "Example: 'We compete with X and Y. We differentiate by having 10x faster integrations using our custom proxy API...'"
+            }
+        ],
+        "market_analysis": {
+            "Market_Metrics": {
+                "TAM": {
+                    "value": "$500M – $2B",
+                    "scope": "Global sector ceiling",
+                    "source_assumption": "Regex-extracted from DuckDuckGo search corpus — LLM validation unavailable"
+                },
+                "SAM": {
+                    "value": "5–15% of TAM (based on geographic population and internet penetration)",
+                    "scope": "We plan to address this by focusing heavily on our core demographic and optimizing our supply chain in Consumer IoT sectors.",
+                    "source_assumption": "Population-ratio assumption: target country's share of global addressable market"
+                },
+                "SOM": {
+                    "value": "0.5–2% of SAM",
+                    "scope": "Year 1 MVP launch",
+                    "source_assumption": "Standard SaaS/marketplace benchmark conversion funnel: 0.5% – 2%"
+                },
+                "CAGR": {
+                    "value": "12% (industry average assumption)",
+                    "period": "2024–2030",
+                    "source_assumption": "Regex-extracted from search corpus"
+                },
+                "Market_Density": "Red Ocean (High Competition)"
+            },
+            "Competitor_Flaws": [
+                {
+                    "competitor": "We plan to address this by focusing heavily on our core demographic and optimizi",
+                    "known_weakness": "LLM call failed — insufficient data for detailed competitor weakness analysis",
+                    "exploit_window": "Manual research required"
+                }
+            ],
+            "Regulatory_Risks": [
+                {
+                    "regulation": "No specific regulatory data for this geography. Defaulting to GDPR baseline.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                }
+            ],
+            "_meta": {
+                "country_detected": "global",
+                "vertical_classified": "hardware IoT robotics",
+                "search_queries_used": [
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo market size report 2025 2026 filetype:pdf",
+                    "site:statista.com hardware IoT robotics We plan to address this by focusing heavily on our core demo global market revenue",
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo TAM SAM SOM market research 2025 site:grandviewresearch.com OR site:mordorintelligence.com",
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo CAGR compound annual growth rate 2024 2030 market forecast",
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo competitor market share analysis global 2024",
+                    "hardware IoT robotics regulatory compliance global legal requirements 2024 2025"
+                ],
+                "corpus_length_chars": 1085,
+                "lang": "en"
+            }
+        },
+        "mvp_analysis": {
+            "Complexity_Score": "8/10",
+            "Complexity_Reasoning": "High technical complexity due to AI/LLM integration (API dependencies, prompt engineering, context management).",
+            "Time_to_Market": "2-3 Months",
+            "MVP_Focus_Features": [
+                "Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API)."
+            ],
+            "MVP_Cut_Features": [
+                "User authentication (Login/Signup - test without passwords initially).",
+                "Saving chat history to database (Session state is enough for now).",
+                "Custom model training (Use prompt engineering first instead of fine-tuning)."
+            ],
+            "Tech_Recommendations": [
+                "🐍 **Backend/Core**: Python (FastAPI or Streamlit)",
+                "🧠 **AI Integration**: LangChain or direct OpenAI/Anthropic API",
+                "🌐 **Frontend**: Streamlit (Zero frontend effort) or Vercel + Next.js (Better UX)",
+                "🗄️ **Database**: Supabase (PostgreSQL) or Firebase"
+            ],
+            "Founder_Sprint_Plan": [
+                {
+                    "week": "Week 1 (Prep & Basic Setup)",
+                    "tasks": [
+                        "Conduct short interviews with your target audience (min 5 people) about the product idea.",
+                        "Choose one of the recommended tools (Python (FastAPI or Streamlit)) and create an account.",
+                        "Buy a domain and set up a simple landing page."
+                    ]
+                },
+                {
+                    "week": "Week 2 (Core MVP Development)",
+                    "tasks": [
+                        "Focus feature: Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API).",
+                        "Absolutely exclude all features we cut ('nice-to-have') from development.",
+                        "Don't aim for design perfection, focus solely on functionality."
+                    ]
+                },
+                {
+                    "week": "Week 3 (Testing & Early Validation)",
+                    "tasks": [
+                        "Test the product yourself and with 2-3 people from your circle.",
+                        "Fix critical bugs, just make the interface understandable.",
+                        "Add a manual payment or 'lead collection' step."
+                    ]
+                },
+                {
+                    "week": "Week 4 (Go-Live & Launch)",
+                    "tasks": [
+                        "Share your MVP on Reddit, Product Hunt, X, or industry LinkedIn groups.",
+                        "Set up a communication channel (Discord/WhatsApp) for instant feedback from early users.",
+                        "Decide whether to pivot or persevere based on reactions."
+                    ]
+                }
+            ]
+        },
+        "finance_analysis": {
+            "LTV_CAC_Estimate": "2.5x",
+            "LTV_CAC_Comment": "Close to industry standards (2.5x - 3x). May require improvement.",
+            "Capital_Intensity": "Medium",
+            "Investment_Score": 55,
+            "Red_Flags": [
+                "⚠️ Estimated LTV/CAC ratio (2.5x) is below the VC ideal of 3x. Unit economics might be challenging.",
+                "🚨 Overall Investment Score is low. Bootstrapping is recommended before seeking VC funding."
+            ]
+        }
+    },
+    {
+        "scenario": "BioTech / MedTech",
+        "pitch": "Microfluidic chip hardware utilizing AI for real-time pathogen screening in dairy farms.",
+        "buzzword_warning": null,
+        "questions_generated": [
+            {
+                "question": "What is your startup idea and what specific problem does it solve?",
+                "guide": "Example: 'We are building an autonomous accounting SaaS for SMBs focusing on ledger reconciliation...'"
+            },
+            {
+                "question": "Who is your exact target niche market and user base initially?",
+                "guide": "Example: 'Our initial target is dental clinics in the US with 1-5 practitioners...'"
+            },
+            {
+                "question": "Who are your 2-3 biggest competitors currently trying to solve this problem, and how will you differentiate?",
+                "guide": "Example: 'We compete with X and Y. We differentiate by having 10x faster integrations using our custom proxy API...'"
+            }
+        ],
+        "market_analysis": {
+            "Market_Metrics": {
+                "TAM": {
+                    "value": "$500M – $2B",
+                    "scope": "Global sector ceiling",
+                    "source_assumption": "Regex-extracted from DuckDuckGo search corpus — LLM validation unavailable"
+                },
+                "SAM": {
+                    "value": "5–15% of TAM (based on geographic population and internet penetration)",
+                    "scope": "We plan to address this by focusing heavily on our core demographic and optimizing our supply chain in BioTech sectors.",
+                    "source_assumption": "Population-ratio assumption: target country's share of global addressable market"
+                },
+                "SOM": {
+                    "value": "0.5–2% of SAM",
+                    "scope": "Year 1 MVP launch",
+                    "source_assumption": "Standard SaaS/marketplace benchmark conversion funnel: 0.5% – 2%"
+                },
+                "CAGR": {
+                    "value": "12% (industry average assumption)",
+                    "period": "2024–2030",
+                    "source_assumption": "Regex-extracted from search corpus"
+                },
+                "Market_Density": "Red Ocean (High Competition)"
+            },
+            "Competitor_Flaws": [
+                {
+                    "competitor": "We plan to address this by focusing heavily on our core demographic and optimizi",
+                    "known_weakness": "LLM call failed — insufficient data for detailed competitor weakness analysis",
+                    "exploit_window": "Manual research required"
+                }
+            ],
+            "Regulatory_Risks": [
+                {
+                    "regulation": "No specific regulatory data for this geography. Defaulting to GDPR baseline.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                }
+            ],
+            "_meta": {
+                "country_detected": "global",
+                "vertical_classified": "hardware IoT robotics",
+                "search_queries_used": [
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo market size report 2025 2026 filetype:pdf",
+                    "site:statista.com hardware IoT robotics We plan to address this by focusing heavily on our core demo global market revenue",
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo TAM SAM SOM market research 2025 site:grandviewresearch.com OR site:mordorintelligence.com",
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo CAGR compound annual growth rate 2024 2030 market forecast",
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo competitor market share analysis global 2024",
+                    "hardware IoT robotics regulatory compliance global legal requirements 2024 2025"
+                ],
+                "corpus_length_chars": 611,
+                "lang": "en"
+            }
+        },
+        "mvp_analysis": {
+            "Complexity_Score": "8/10",
+            "Complexity_Reasoning": "High technical complexity due to AI/LLM integration (API dependencies, prompt engineering, context management).",
+            "Time_to_Market": "2-3 Months",
+            "MVP_Focus_Features": [
+                "Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API)."
+            ],
+            "MVP_Cut_Features": [
+                "User authentication (Login/Signup - test without passwords initially).",
+                "Saving chat history to database (Session state is enough for now).",
+                "Custom model training (Use prompt engineering first instead of fine-tuning)."
+            ],
+            "Tech_Recommendations": [
+                "🐍 **Backend/Core**: Python (FastAPI or Streamlit)",
+                "🧠 **AI Integration**: LangChain or direct OpenAI/Anthropic API",
+                "🌐 **Frontend**: Streamlit (Zero frontend effort) or Vercel + Next.js (Better UX)",
+                "🗄️ **Database**: Supabase (PostgreSQL) or Firebase"
+            ],
+            "Founder_Sprint_Plan": [
+                {
+                    "week": "Week 1 (Prep & Basic Setup)",
+                    "tasks": [
+                        "Conduct short interviews with your target audience (min 5 people) about the product idea.",
+                        "Choose one of the recommended tools (Python (FastAPI or Streamlit)) and create an account.",
+                        "Buy a domain and set up a simple landing page."
+                    ]
+                },
+                {
+                    "week": "Week 2 (Core MVP Development)",
+                    "tasks": [
+                        "Focus feature: Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API).",
+                        "Absolutely exclude all features we cut ('nice-to-have') from development.",
+                        "Don't aim for design perfection, focus solely on functionality."
+                    ]
+                },
+                {
+                    "week": "Week 3 (Testing & Early Validation)",
+                    "tasks": [
+                        "Test the product yourself and with 2-3 people from your circle.",
+                        "Fix critical bugs, just make the interface understandable.",
+                        "Add a manual payment or 'lead collection' step."
+                    ]
+                },
+                {
+                    "week": "Week 4 (Go-Live & Launch)",
+                    "tasks": [
+                        "Share your MVP on Reddit, Product Hunt, X, or industry LinkedIn groups.",
+                        "Set up a communication channel (Discord/WhatsApp) for instant feedback from early users.",
+                        "Decide whether to pivot or persevere based on reactions."
+                    ]
+                }
+            ]
+        },
+        "finance_analysis": {
+            "LTV_CAC_Estimate": "2.5x",
+            "LTV_CAC_Comment": "Close to industry standards (2.5x - 3x). May require improvement.",
+            "Capital_Intensity": "Medium",
+            "Investment_Score": 55,
+            "Red_Flags": [
+                "⚠️ Estimated LTV/CAC ratio (2.5x) is below the VC ideal of 3x. Unit economics might be challenging.",
+                "🚨 Overall Investment Score is low. Bootstrapping is recommended before seeking VC funding."
+            ]
+        }
+    },
+    {
+        "scenario": "AgriTech / Drone",
+        "pitch": "Autonomous drone fleet tracking soil nitrogen levels with multispectral sensors.",
+        "buzzword_warning": null,
+        "questions_generated": [
+            {
+                "question": "What is your startup idea and what specific problem does it solve?",
+                "guide": "Example: 'We are building an autonomous accounting SaaS for SMBs focusing on ledger reconciliation...'"
+            },
+            {
+                "question": "Who is your exact target niche market and user base initially?",
+                "guide": "Example: 'Our initial target is dental clinics in the US with 1-5 practitioners...'"
+            },
+            {
+                "question": "Who are your 2-3 biggest competitors currently trying to solve this problem, and how will you differentiate?",
+                "guide": "Example: 'We compete with X and Y. We differentiate by having 10x faster integrations using our custom proxy API...'"
+            }
+        ],
+        "market_analysis": {
+            "Market_Metrics": {
+                "TAM": {
+                    "value": "$500M – $2B",
+                    "scope": "Global sector ceiling",
+                    "source_assumption": "Regex-extracted from DuckDuckGo search corpus — LLM validation unavailable"
+                },
+                "SAM": {
+                    "value": "5–15% of TAM (based on geographic population and internet penetration)",
+                    "scope": "We plan to address this by focusing heavily on our core demographic and optimizing our supply chain in AgriTech sectors.",
+                    "source_assumption": "Population-ratio assumption: target country's share of global addressable market"
+                },
+                "SOM": {
+                    "value": "0.5–2% of SAM",
+                    "scope": "Year 1 MVP launch",
+                    "source_assumption": "Standard SaaS/marketplace benchmark conversion funnel: 0.5% – 2%"
+                },
+                "CAGR": {
+                    "value": "12% (industry average assumption)",
+                    "period": "2024–2030",
+                    "source_assumption": "Regex-extracted from search corpus"
+                },
+                "Market_Density": "Red Ocean (High Competition)"
+            },
+            "Competitor_Flaws": [
+                {
+                    "competitor": "We plan to address this by focusing heavily on our core demographic and optimizi",
+                    "known_weakness": "LLM call failed — insufficient data for detailed competitor weakness analysis",
+                    "exploit_window": "Manual research required"
+                }
+            ],
+            "Regulatory_Risks": [
+                {
+                    "regulation": "KVKK (Kişisel Verilerin Korunması Kanunu) — mandatory data localisation and explicit consent flows required before any B2C data processing.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                },
+                {
+                    "regulation": "BDDK/SPK licencing — fintech and payment solutions require explicit regulatory approval; typical timeline 6-18 months.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                },
+                {
+                    "regulation": "Import tariffs & ÖTV — hardware/IoT devices face up to 25% import duties, compressing unit economics severely.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                }
+            ],
+            "_meta": {
+                "country_detected": "turkey",
+                "vertical_classified": "hardware IoT robotics",
+                "search_queries_used": [
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo market size report 2025 2026 filetype:pdf",
+                    "site:statista.com hardware IoT robotics We plan to address this by focusing heavily on our core demo turkey market revenue",
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo TAM SAM SOM market research 2025 site:grandviewresearch.com OR site:mordorintelligence.com",
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo CAGR compound annual growth rate 2024 2030 market forecast",
+                    "hardware IoT robotics We plan to address this by focusing heavily on our core demo competitor market share analysis turkey 2024",
+                    "hardware IoT robotics regulatory compliance turkey legal requirements 2024 2025"
+                ],
+                "corpus_length_chars": 620,
+                "lang": "en"
+            }
+        },
+        "mvp_analysis": {
+            "Complexity_Score": "8/10",
+            "Complexity_Reasoning": "High technical complexity due to AI/LLM integration (API dependencies, prompt engineering, context management).",
+            "Time_to_Market": "2-3 Months",
+            "MVP_Focus_Features": [
+                "Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API)."
+            ],
+            "MVP_Cut_Features": [
+                "User authentication (Login/Signup - test without passwords initially).",
+                "Saving chat history to database (Session state is enough for now).",
+                "Custom model training (Use prompt engineering first instead of fine-tuning)."
+            ],
+            "Tech_Recommendations": [
+                "🐍 **Backend/Core**: Python (FastAPI or Streamlit)",
+                "🧠 **AI Integration**: LangChain or direct OpenAI/Anthropic API",
+                "🌐 **Frontend**: Streamlit (Zero frontend effort) or Vercel + Next.js (Better UX)",
+                "🗄️ **Database**: Supabase (PostgreSQL) or Firebase"
+            ],
+            "Founder_Sprint_Plan": [
+                {
+                    "week": "Week 1 (Prep & Basic Setup)",
+                    "tasks": [
+                        "Conduct short interviews with your target audience (min 5 people) about the product idea.",
+                        "Choose one of the recommended tools (Python (FastAPI or Streamlit)) and create an account.",
+                        "Buy a domain and set up a simple landing page."
+                    ]
+                },
+                {
+                    "week": "Week 2 (Core MVP Development)",
+                    "tasks": [
+                        "Focus feature: Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API).",
+                        "Absolutely exclude all features we cut ('nice-to-have') from development.",
+                        "Don't aim for design perfection, focus solely on functionality."
+                    ]
+                },
+                {
+                    "week": "Week 3 (Testing & Early Validation)",
+                    "tasks": [
+                        "Test the product yourself and with 2-3 people from your circle.",
+                        "Fix critical bugs, just make the interface understandable.",
+                        "Add a manual payment or 'lead collection' step."
+                    ]
+                },
+                {
+                    "week": "Week 4 (Go-Live & Launch)",
+                    "tasks": [
+                        "Share your MVP on Reddit, Product Hunt, X, or industry LinkedIn groups.",
+                        "Set up a communication channel (Discord/WhatsApp) for instant feedback from early users.",
+                        "Decide whether to pivot or persevere based on reactions."
+                    ]
+                }
+            ]
+        },
+        "finance_analysis": {
+            "LTV_CAC_Estimate": "2.5x",
+            "LTV_CAC_Comment": "Close to industry standards (2.5x - 3x). May require improvement.",
+            "Capital_Intensity": "Medium",
+            "Investment_Score": 55,
+            "Red_Flags": [
+                "⚠️ Estimated LTV/CAC ratio (2.5x) is below the VC ideal of 3x. Unit economics might be challenging.",
+                "🚨 Overall Investment Score is low. Bootstrapping is recommended before seeking VC funding."
+            ]
+        }
+    },
+    {
+        "scenario": "FinTech / Compliance",
+        "pitch": "Real-time AI-driven anti-money laundering (AML) graph database analyzer.",
+        "buzzword_warning": null,
+        "questions_generated": [
+            {
+                "question": "What is your startup idea and what specific problem does it solve?",
+                "guide": "Example: 'We are building an autonomous accounting SaaS for SMBs focusing on ledger reconciliation...'"
+            },
+            {
+                "question": "Who is your exact target niche market and user base initially?",
+                "guide": "Example: 'Our initial target is dental clinics in the US with 1-5 practitioners...'"
+            },
+            {
+                "question": "Who are your 2-3 biggest competitors currently trying to solve this problem, and how will you differentiate?",
+                "guide": "Example: 'We compete with X and Y. We differentiate by having 10x faster integrations using our custom proxy API...'"
+            }
+        ],
+        "market_analysis": {
+            "Market_Metrics": {
+                "TAM": {
+                    "value": "$500M – $2B",
+                    "scope": "Global sector ceiling",
+                    "source_assumption": "Regex-extracted from DuckDuckGo search corpus — LLM validation unavailable"
+                },
+                "SAM": {
+                    "value": "5–15% of TAM (based on geographic population and internet penetration)",
+                    "scope": "We plan to address this by focusing heavily on our core demographic and optimizing our supply chain in FinTech sectors.",
+                    "source_assumption": "Population-ratio assumption: target country's share of global addressable market"
+                },
+                "SOM": {
+                    "value": "0.5–2% of SAM",
+                    "scope": "Year 1 MVP launch",
+                    "source_assumption": "Standard SaaS/marketplace benchmark conversion funnel: 0.5% – 2%"
+                },
+                "CAGR": {
+                    "value": "12% (industry average assumption)",
+                    "period": "2024–2030",
+                    "source_assumption": "Regex-extracted from search corpus"
+                },
+                "Market_Density": "Red Ocean (High Competition)"
+            },
+            "Competitor_Flaws": [
+                {
+                    "competitor": "We plan to address this by focusing heavily on our core demographic and optimizi",
+                    "known_weakness": "LLM call failed — insufficient data for detailed competitor weakness analysis",
+                    "exploit_window": "Manual research required"
+                }
+            ],
+            "Regulatory_Risks": [
+                {
+                    "regulation": "No specific regulatory data for this geography. Defaulting to GDPR baseline.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                }
+            ],
+            "_meta": {
+                "country_detected": "global",
+                "vertical_classified": "fintech payments",
+                "search_queries_used": [
+                    "fintech payments We plan to address this by focusing heavily on our core demo market size report 2025 2026 filetype:pdf",
+                    "site:statista.com fintech payments We plan to address this by focusing heavily on our core demo global market revenue",
+                    "fintech payments We plan to address this by focusing heavily on our core demo TAM SAM SOM market research 2025 site:grandviewresearch.com OR site:mordorintelligence.com",
+                    "fintech payments We plan to address this by focusing heavily on our core demo CAGR compound annual growth rate 2024 2030 market forecast",
+                    "fintech payments We plan to address this by focusing heavily on our core demo competitor market share analysis global 2024",
+                    "fintech payments regulatory compliance global legal requirements 2024 2025"
+                ],
+                "corpus_length_chars": 0,
+                "lang": "en"
+            }
+        },
+        "mvp_analysis": {
+            "Complexity_Score": "8/10",
+            "Complexity_Reasoning": "High technical complexity due to AI/LLM integration (API dependencies, prompt engineering, context management).",
+            "Time_to_Market": "2-3 Months",
+            "MVP_Focus_Features": [
+                "Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API)."
+            ],
+            "MVP_Cut_Features": [
+                "User authentication (Login/Signup - test without passwords initially).",
+                "Saving chat history to database (Session state is enough for now).",
+                "Custom model training (Use prompt engineering first instead of fine-tuning)."
+            ],
+            "Tech_Recommendations": [
+                "🐍 **Backend/Core**: Python (FastAPI or Streamlit)",
+                "🧠 **AI Integration**: LangChain or direct OpenAI/Anthropic API",
+                "🌐 **Frontend**: Streamlit (Zero frontend effort) or Vercel + Next.js (Better UX)",
+                "🗄️ **Database**: Supabase (PostgreSQL) or Firebase"
+            ],
+            "Founder_Sprint_Plan": [
+                {
+                    "week": "Week 1 (Prep & Basic Setup)",
+                    "tasks": [
+                        "Conduct short interviews with your target audience (min 5 people) about the product idea.",
+                        "Choose one of the recommended tools (Python (FastAPI or Streamlit)) and create an account.",
+                        "Buy a domain and set up a simple landing page."
+                    ]
+                },
+                {
+                    "week": "Week 2 (Core MVP Development)",
+                    "tasks": [
+                        "Focus feature: Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API).",
+                        "Absolutely exclude all features we cut ('nice-to-have') from development.",
+                        "Don't aim for design perfection, focus solely on functionality."
+                    ]
+                },
+                {
+                    "week": "Week 3 (Testing & Early Validation)",
+                    "tasks": [
+                        "Test the product yourself and with 2-3 people from your circle.",
+                        "Fix critical bugs, just make the interface understandable.",
+                        "Add a manual payment or 'lead collection' step."
+                    ]
+                },
+                {
+                    "week": "Week 4 (Go-Live & Launch)",
+                    "tasks": [
+                        "Share your MVP on Reddit, Product Hunt, X, or industry LinkedIn groups.",
+                        "Set up a communication channel (Discord/WhatsApp) for instant feedback from early users.",
+                        "Decide whether to pivot or persevere based on reactions."
+                    ]
+                }
+            ]
+        },
+        "finance_analysis": {
+            "LTV_CAC_Estimate": "2.5x",
+            "LTV_CAC_Comment": "Close to industry standards (2.5x - 3x). May require improvement.",
+            "Capital_Intensity": "Medium",
+            "Investment_Score": 55,
+            "Red_Flags": [
+                "⚠️ Estimated LTV/CAC ratio (2.5x) is below the VC ideal of 3x. Unit economics might be challenging.",
+                "🚨 Overall Investment Score is low. Bootstrapping is recommended before seeking VC funding."
+            ]
+        }
+    },
+    {
+        "scenario": "SpaceTech / Hardware",
+        "pitch": "Low-Earth orbit satellite communications cubesat antenna arrays.",
+        "buzzword_warning": null,
+        "questions_generated": [
+            {
+                "question": "What is your startup idea and what specific problem does it solve?",
+                "guide": "Example: 'We are building an autonomous accounting SaaS for SMBs focusing on ledger reconciliation...'"
+            },
+            {
+                "question": "Who is your exact target niche market and user base initially?",
+                "guide": "Example: 'Our initial target is dental clinics in the US with 1-5 practitioners...'"
+            },
+            {
+                "question": "Who are your 2-3 biggest competitors currently trying to solve this problem, and how will you differentiate?",
+                "guide": "Example: 'We compete with X and Y. We differentiate by having 10x faster integrations using our custom proxy API...'"
+            }
+        ],
+        "market_analysis": {
+            "Market_Metrics": {
+                "TAM": {
+                    "value": "$500M – $2B",
+                    "scope": "Global sector ceiling",
+                    "source_assumption": "Regex-extracted from DuckDuckGo search corpus — LLM validation unavailable"
+                },
+                "SAM": {
+                    "value": "5–15% of TAM (based on geographic population and internet penetration)",
+                    "scope": "We plan to address this by focusing heavily on our core demographic and optimizing our supply chain in SpaceTech sectors.",
+                    "source_assumption": "Population-ratio assumption: target country's share of global addressable market"
+                },
+                "SOM": {
+                    "value": "0.5–2% of SAM",
+                    "scope": "Year 1 MVP launch",
+                    "source_assumption": "Standard SaaS/marketplace benchmark conversion funnel: 0.5% – 2%"
+                },
+                "CAGR": {
+                    "value": "12% (industry average assumption)",
+                    "period": "2024–2030",
+                    "source_assumption": "Regex-extracted from search corpus"
+                },
+                "Market_Density": "Red Ocean (High Competition)"
+            },
+            "Competitor_Flaws": [
+                {
+                    "competitor": "We plan to address this by focusing heavily on our core demographic and optimizi",
+                    "known_weakness": "LLM call failed — insufficient data for detailed competitor weakness analysis",
+                    "exploit_window": "Manual research required"
+                }
+            ],
+            "Regulatory_Risks": [
+                {
+                    "regulation": "No specific regulatory data for this geography. Defaulting to GDPR baseline.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                }
+            ],
+            "_meta": {
+                "country_detected": "global",
+                "vertical_classified": "deep tech AI ML",
+                "search_queries_used": [
+                    "deep tech AI ML We plan to address this by focusing heavily on our core demo market size report 2025 2026 filetype:pdf",
+                    "site:statista.com deep tech AI ML We plan to address this by focusing heavily on our core demo global market revenue",
+                    "deep tech AI ML We plan to address this by focusing heavily on our core demo TAM SAM SOM market research 2025 site:grandviewresearch.com OR site:mordorintelligence.com",
+                    "deep tech AI ML We plan to address this by focusing heavily on our core demo CAGR compound annual growth rate 2024 2030 market forecast",
+                    "deep tech AI ML We plan to address this by focusing heavily on our core demo competitor market share analysis global 2024",
+                    "deep tech AI ML regulatory compliance global legal requirements 2024 2025"
+                ],
+                "corpus_length_chars": 0,
+                "lang": "en"
+            }
+        },
+        "mvp_analysis": {
+            "Complexity_Score": "8/10",
+            "Complexity_Reasoning": "High technical complexity due to AI/LLM integration (API dependencies, prompt engineering, context management).",
+            "Time_to_Market": "2-3 Months",
+            "MVP_Focus_Features": [
+                "Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API)."
+            ],
+            "MVP_Cut_Features": [
+                "User authentication (Login/Signup - test without passwords initially).",
+                "Saving chat history to database (Session state is enough for now).",
+                "Custom model training (Use prompt engineering first instead of fine-tuning)."
+            ],
+            "Tech_Recommendations": [
+                "🐍 **Backend/Core**: Python (FastAPI or Streamlit)",
+                "🧠 **AI Integration**: LangChain or direct OpenAI/Anthropic API",
+                "🌐 **Frontend**: Streamlit (Zero frontend effort) or Vercel + Next.js (Better UX)",
+                "🗄️ **Database**: Supabase (PostgreSQL) or Firebase"
+            ],
+            "Founder_Sprint_Plan": [
+                {
+                    "week": "Week 1 (Prep & Basic Setup)",
+                    "tasks": [
+                        "Conduct short interviews with your target audience (min 5 people) about the product idea.",
+                        "Choose one of the recommended tools (Python (FastAPI or Streamlit)) and create an account.",
+                        "Buy a domain and set up a simple landing page."
+                    ]
+                },
+                {
+                    "week": "Week 2 (Core MVP Development)",
+                    "tasks": [
+                        "Focus feature: Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API).",
+                        "Absolutely exclude all features we cut ('nice-to-have') from development.",
+                        "Don't aim for design perfection, focus solely on functionality."
+                    ]
+                },
+                {
+                    "week": "Week 3 (Testing & Early Validation)",
+                    "tasks": [
+                        "Test the product yourself and with 2-3 people from your circle.",
+                        "Fix critical bugs, just make the interface understandable.",
+                        "Add a manual payment or 'lead collection' step."
+                    ]
+                },
+                {
+                    "week": "Week 4 (Go-Live & Launch)",
+                    "tasks": [
+                        "Share your MVP on Reddit, Product Hunt, X, or industry LinkedIn groups.",
+                        "Set up a communication channel (Discord/WhatsApp) for instant feedback from early users.",
+                        "Decide whether to pivot or persevere based on reactions."
+                    ]
+                }
+            ]
+        },
+        "finance_analysis": {
+            "LTV_CAC_Estimate": "2.5x",
+            "LTV_CAC_Comment": "Close to industry standards (2.5x - 3x). May require improvement.",
+            "Capital_Intensity": "Medium",
+            "Investment_Score": 55,
+            "Red_Flags": [
+                "⚠️ Estimated LTV/CAC ratio (2.5x) is below the VC ideal of 3x. Unit economics might be challenging.",
+                "🚨 Overall Investment Score is low. Bootstrapping is recommended before seeking VC funding."
+            ]
+        }
+    },
+    {
+        "scenario": "E-Commerce / Hybrid",
+        "pitch": "Customized mechanical keyboard dynamic hot-swap switch marketplaces utilizing generative 3D modeling tools.",
+        "buzzword_warning": null,
+        "questions_generated": [
+            {
+                "question": "What is your startup idea and what specific problem does it solve?",
+                "guide": "Example: 'We are building an autonomous accounting SaaS for SMBs focusing on ledger reconciliation...'"
+            },
+            {
+                "question": "Who is your exact target niche market and user base initially?",
+                "guide": "Example: 'Our initial target is dental clinics in the US with 1-5 practitioners...'"
+            },
+            {
+                "question": "Who are your 2-3 biggest competitors currently trying to solve this problem, and how will you differentiate?",
+                "guide": "Example: 'We compete with X and Y. We differentiate by having 10x faster integrations using our custom proxy API...'"
+            }
+        ],
+        "market_analysis": {
+            "Market_Metrics": {
+                "TAM": {
+                    "value": "$500M – $2B",
+                    "scope": "Global sector ceiling",
+                    "source_assumption": "Regex-extracted from DuckDuckGo search corpus — LLM validation unavailable"
+                },
+                "SAM": {
+                    "value": "5–15% of TAM (based on geographic population and internet penetration)",
+                    "scope": "We plan to address this by focusing heavily on our core demographic and optimizing our supply chain in E-Commerce sectors.",
+                    "source_assumption": "Population-ratio assumption: target country's share of global addressable market"
+                },
+                "SOM": {
+                    "value": "0.5–2% of SAM",
+                    "scope": "Year 1 MVP launch",
+                    "source_assumption": "Standard SaaS/marketplace benchmark conversion funnel: 0.5% – 2%"
+                },
+                "CAGR": {
+                    "value": "12% (industry average assumption)",
+                    "period": "2024–2030",
+                    "source_assumption": "Regex-extracted from search corpus"
+                },
+                "Market_Density": "Red Ocean (High Competition)"
+            },
+            "Competitor_Flaws": [
+                {
+                    "competitor": "We plan to address this by focusing heavily on our core demographic and optimizi",
+                    "known_weakness": "LLM call failed — insufficient data for detailed competitor weakness analysis",
+                    "exploit_window": "Manual research required"
+                }
+            ],
+            "Regulatory_Risks": [
+                {
+                    "regulation": "No specific regulatory data for this geography. Defaulting to GDPR baseline.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                }
+            ],
+            "_meta": {
+                "country_detected": "global",
+                "vertical_classified": "e-commerce marketplace",
+                "search_queries_used": [
+                    "e-commerce marketplace We plan to address this by focusing heavily on our core demo market size report 2025 2026 filetype:pdf",
+                    "site:statista.com e-commerce marketplace We plan to address this by focusing heavily on our core demo global market revenue",
+                    "e-commerce marketplace We plan to address this by focusing heavily on our core demo TAM SAM SOM market research 2025 site:grandviewresearch.com OR site:mordorintelligence.com",
+                    "e-commerce marketplace We plan to address this by focusing heavily on our core demo CAGR compound annual growth rate 2024 2030 market forecast",
+                    "e-commerce marketplace We plan to address this by focusing heavily on our core demo competitor market share analysis global 2024",
+                    "e-commerce marketplace regulatory compliance global legal requirements 2024 2025"
+                ],
+                "corpus_length_chars": 448,
+                "lang": "en"
+            }
+        },
+        "mvp_analysis": {
+            "Complexity_Score": "8/10",
+            "Complexity_Reasoning": "High technical complexity due to AI/LLM integration (API dependencies, prompt engineering, context management).",
+            "Time_to_Market": "2-3 Months",
+            "MVP_Focus_Features": [
+                "Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API)."
+            ],
+            "MVP_Cut_Features": [
+                "User authentication (Login/Signup - test without passwords initially).",
+                "Saving chat history to database (Session state is enough for now).",
+                "Custom model training (Use prompt engineering first instead of fine-tuning)."
+            ],
+            "Tech_Recommendations": [
+                "🐍 **Backend/Core**: Python (FastAPI or Streamlit)",
+                "🧠 **AI Integration**: LangChain or direct OpenAI/Anthropic API",
+                "🌐 **Frontend**: Streamlit (Zero frontend effort) or Vercel + Next.js (Better UX)",
+                "🗄️ **Database**: Supabase (PostgreSQL) or Firebase"
+            ],
+            "Founder_Sprint_Plan": [
+                {
+                    "week": "Week 1 (Prep & Basic Setup)",
+                    "tasks": [
+                        "Conduct short interviews with your target audience (min 5 people) about the product idea.",
+                        "Choose one of the recommended tools (Python (FastAPI or Streamlit)) and create an account.",
+                        "Buy a domain and set up a simple landing page."
+                    ]
+                },
+                {
+                    "week": "Week 2 (Core MVP Development)",
+                    "tasks": [
+                        "Focus feature: Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API).",
+                        "Absolutely exclude all features we cut ('nice-to-have') from development.",
+                        "Don't aim for design perfection, focus solely on functionality."
+                    ]
+                },
+                {
+                    "week": "Week 3 (Testing & Early Validation)",
+                    "tasks": [
+                        "Test the product yourself and with 2-3 people from your circle.",
+                        "Fix critical bugs, just make the interface understandable.",
+                        "Add a manual payment or 'lead collection' step."
+                    ]
+                },
+                {
+                    "week": "Week 4 (Go-Live & Launch)",
+                    "tasks": [
+                        "Share your MVP on Reddit, Product Hunt, X, or industry LinkedIn groups.",
+                        "Set up a communication channel (Discord/WhatsApp) for instant feedback from early users.",
+                        "Decide whether to pivot or persevere based on reactions."
+                    ]
+                }
+            ]
+        },
+        "finance_analysis": {
+            "LTV_CAC_Estimate": "2.5x",
+            "LTV_CAC_Comment": "Close to industry standards (2.5x - 3x). May require improvement.",
+            "Capital_Intensity": "Medium",
+            "Investment_Score": 55,
+            "Red_Flags": [
+                "⚠️ Estimated LTV/CAC ratio (2.5x) is below the VC ideal of 3x. Unit economics might be challenging.",
+                "🚨 Overall Investment Score is low. Bootstrapping is recommended before seeking VC funding."
+            ]
+        }
+    },
+    {
+        "scenario": "CleanTech / Hardware",
+        "pitch": "Residential-scale micro-wind turbine hardware with integrated power grid software.",
+        "buzzword_warning": null,
+        "questions_generated": [
+            {
+                "question": "What is your startup idea and what specific problem does it solve?",
+                "guide": "Example: 'We are building an autonomous accounting SaaS for SMBs focusing on ledger reconciliation...'"
+            },
+            {
+                "question": "Who is your exact target niche market and user base initially?",
+                "guide": "Example: 'Our initial target is dental clinics in the US with 1-5 practitioners...'"
+            },
+            {
+                "question": "Who are your 2-3 biggest competitors currently trying to solve this problem, and how will you differentiate?",
+                "guide": "Example: 'We compete with X and Y. We differentiate by having 10x faster integrations using our custom proxy API...'"
+            }
+        ],
+        "market_analysis": {
+            "Market_Metrics": {
+                "TAM": {
+                    "value": "$500M – $2B",
+                    "scope": "Global sector ceiling",
+                    "source_assumption": "Regex-extracted from DuckDuckGo search corpus — LLM validation unavailable"
+                },
+                "SAM": {
+                    "value": "5–15% of TAM (based on geographic population and internet penetration)",
+                    "scope": "We plan to address this by focusing heavily on our core demographic and optimizing our supply chain in CleanTech sectors.",
+                    "source_assumption": "Population-ratio assumption: target country's share of global addressable market"
+                },
+                "SOM": {
+                    "value": "0.5–2% of SAM",
+                    "scope": "Year 1 MVP launch",
+                    "source_assumption": "Standard SaaS/marketplace benchmark conversion funnel: 0.5% – 2%"
+                },
+                "CAGR": {
+                    "value": "12% (industry average assumption)",
+                    "period": "2024–2030",
+                    "source_assumption": "Regex-extracted from search corpus"
+                },
+                "Market_Density": "Red Ocean (High Competition)"
+            },
+            "Competitor_Flaws": [
+                {
+                    "competitor": "We plan to address this by focusing heavily on our core demographic and optimizi",
+                    "known_weakness": "LLM call failed — insufficient data for detailed competitor weakness analysis",
+                    "exploit_window": "Manual research required"
+                }
+            ],
+            "Regulatory_Risks": [
+                {
+                    "regulation": "No specific regulatory data for this geography. Defaulting to GDPR baseline.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                }
+            ],
+            "_meta": {
+                "country_detected": "global",
+                "vertical_classified": "SaaS B2B software",
+                "search_queries_used": [
+                    "SaaS B2B software We plan to address this by focusing heavily on our core demo market size report 2025 2026 filetype:pdf",
+                    "site:statista.com SaaS B2B software We plan to address this by focusing heavily on our core demo global market revenue",
+                    "SaaS B2B software We plan to address this by focusing heavily on our core demo TAM SAM SOM market research 2025 site:grandviewresearch.com OR site:mordorintelligence.com",
+                    "SaaS B2B software We plan to address this by focusing heavily on our core demo CAGR compound annual growth rate 2024 2030 market forecast",
+                    "SaaS B2B software We plan to address this by focusing heavily on our core demo competitor market share analysis global 2024",
+                    "SaaS B2B software regulatory compliance global legal requirements 2024 2025"
+                ],
+                "corpus_length_chars": 778,
+                "lang": "en"
+            }
+        },
+        "mvp_analysis": {
+            "Complexity_Score": "8/10",
+            "Complexity_Reasoning": "High technical complexity due to AI/LLM integration (API dependencies, prompt engineering, context management).",
+            "Time_to_Market": "2-3 Months",
+            "MVP_Focus_Features": [
+                "Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API)."
+            ],
+            "MVP_Cut_Features": [
+                "User authentication (Login/Signup - test without passwords initially).",
+                "Saving chat history to database (Session state is enough for now).",
+                "Custom model training (Use prompt engineering first instead of fine-tuning)."
+            ],
+            "Tech_Recommendations": [
+                "🐍 **Backend/Core**: Python (FastAPI or Streamlit)",
+                "🧠 **AI Integration**: LangChain or direct OpenAI/Anthropic API",
+                "🌐 **Frontend**: Streamlit (Zero frontend effort) or Vercel + Next.js (Better UX)",
+                "🗄️ **Database**: Supabase (PostgreSQL) or Firebase"
+            ],
+            "Founder_Sprint_Plan": [
+                {
+                    "week": "Week 1 (Prep & Basic Setup)",
+                    "tasks": [
+                        "Conduct short interviews with your target audience (min 5 people) about the product idea.",
+                        "Choose one of the recommended tools (Python (FastAPI or Streamlit)) and create an account.",
+                        "Buy a domain and set up a simple landing page."
+                    ]
+                },
+                {
+                    "week": "Week 2 (Core MVP Development)",
+                    "tasks": [
+                        "Focus feature: Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API).",
+                        "Absolutely exclude all features we cut ('nice-to-have') from development.",
+                        "Don't aim for design perfection, focus solely on functionality."
+                    ]
+                },
+                {
+                    "week": "Week 3 (Testing & Early Validation)",
+                    "tasks": [
+                        "Test the product yourself and with 2-3 people from your circle.",
+                        "Fix critical bugs, just make the interface understandable.",
+                        "Add a manual payment or 'lead collection' step."
+                    ]
+                },
+                {
+                    "week": "Week 4 (Go-Live & Launch)",
+                    "tasks": [
+                        "Share your MVP on Reddit, Product Hunt, X, or industry LinkedIn groups.",
+                        "Set up a communication channel (Discord/WhatsApp) for instant feedback from early users.",
+                        "Decide whether to pivot or persevere based on reactions."
+                    ]
+                }
+            ]
+        },
+        "finance_analysis": {
+            "LTV_CAC_Estimate": "2.5x",
+            "LTV_CAC_Comment": "Close to industry standards (2.5x - 3x). May require improvement.",
+            "Capital_Intensity": "Medium",
+            "Investment_Score": 55,
+            "Red_Flags": [
+                "⚠️ Estimated LTV/CAC ratio (2.5x) is below the VC ideal of 3x. Unit economics might be challenging.",
+                "🚨 Overall Investment Score is low. Bootstrapping is recommended before seeking VC funding."
+            ]
+        }
+    },
+    {
+        "scenario": "EdTech / SaaS",
+        "pitch": "AI-generated personalized gamified curriculum engines for neurodivergent children.",
+        "buzzword_warning": null,
+        "questions_generated": [
+            {
+                "question": "What is your startup idea and what specific problem does it solve?",
+                "guide": "Example: 'We are building an autonomous accounting SaaS for SMBs focusing on ledger reconciliation...'"
+            },
+            {
+                "question": "Who is your exact target niche market and user base initially?",
+                "guide": "Example: 'Our initial target is dental clinics in the US with 1-5 practitioners...'"
+            },
+            {
+                "question": "Who are your 2-3 biggest competitors currently trying to solve this problem, and how will you differentiate?",
+                "guide": "Example: 'We compete with X and Y. We differentiate by having 10x faster integrations using our custom proxy API...'"
+            }
+        ],
+        "market_analysis": {
+            "Market_Metrics": {
+                "TAM": {
+                    "value": "$500M – $2B",
+                    "scope": "Global sector ceiling",
+                    "source_assumption": "Regex-extracted from DuckDuckGo search corpus — LLM validation unavailable"
+                },
+                "SAM": {
+                    "value": "5–15% of TAM (based on geographic population and internet penetration)",
+                    "scope": "We plan to address this by focusing heavily on our core demographic and optimizing our supply chain in EdTech sectors.",
+                    "source_assumption": "Population-ratio assumption: target country's share of global addressable market"
+                },
+                "SOM": {
+                    "value": "0.5–2% of SAM",
+                    "scope": "Year 1 MVP launch",
+                    "source_assumption": "Standard SaaS/marketplace benchmark conversion funnel: 0.5% – 2%"
+                },
+                "CAGR": {
+                    "value": "12% (industry average assumption)",
+                    "period": "2024–2030",
+                    "source_assumption": "Regex-extracted from search corpus"
+                },
+                "Market_Density": "Red Ocean (High Competition)"
+            },
+            "Competitor_Flaws": [
+                {
+                    "competitor": "We plan to address this by focusing heavily on our core demographic and optimizi",
+                    "known_weakness": "LLM call failed — insufficient data for detailed competitor weakness analysis",
+                    "exploit_window": "Manual research required"
+                }
+            ],
+            "Regulatory_Risks": [
+                {
+                    "regulation": "GDPR (General Data Protection Regulation) — Art. 17 right-to-erasure and Art. 20 data portability require significant engineering investment; fines up to 4% global annual turnover.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                },
+                {
+                    "regulation": "AI Act (2024) — high-risk AI systems (HR-tech, credit scoring, biometrics) require conformity assessments before market entry.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                },
+                {
+                    "regulation": "MDR (EU Medical Device Regulation) — health-tech hardware requires CE/MDR certification; notified body queues are 18-36 months.",
+                    "impact": "Legal/financial impact assessment requires qualified legal counsel",
+                    "mitigation": "Obtain legal opinion prior to incorporation and product launch"
+                }
+            ],
+            "_meta": {
+                "country_detected": "eu",
+                "vertical_classified": "deep tech AI ML",
+                "search_queries_used": [
+                    "deep tech AI ML We plan to address this by focusing heavily on our core demo market size report 2025 2026 filetype:pdf",
+                    "site:statista.com deep tech AI ML We plan to address this by focusing heavily on our core demo eu market revenue",
+                    "deep tech AI ML We plan to address this by focusing heavily on our core demo TAM SAM SOM market research 2025 site:grandviewresearch.com OR site:mordorintelligence.com",
+                    "deep tech AI ML We plan to address this by focusing heavily on our core demo CAGR compound annual growth rate 2024 2030 market forecast",
+                    "deep tech AI ML We plan to address this by focusing heavily on our core demo competitor market share analysis eu 2024",
+                    "deep tech AI ML regulatory compliance eu legal requirements 2024 2025"
+                ],
+                "corpus_length_chars": 0,
+                "lang": "en"
+            }
+        },
+        "mvp_analysis": {
+            "Complexity_Score": "8/10",
+            "Complexity_Reasoning": "High technical complexity due to AI/LLM integration (API dependencies, prompt engineering, context management).",
+            "Time_to_Market": "2-3 Months",
+            "MVP_Focus_Features": [
+                "Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API)."
+            ],
+            "MVP_Cut_Features": [
+                "User authentication (Login/Signup - test without passwords initially).",
+                "Saving chat history to database (Session state is enough for now).",
+                "Custom model training (Use prompt engineering first instead of fine-tuning)."
+            ],
+            "Tech_Recommendations": [
+                "🐍 **Backend/Core**: Python (FastAPI or Streamlit)",
+                "🧠 **AI Integration**: LangChain or direct OpenAI/Anthropic API",
+                "🌐 **Frontend**: Streamlit (Zero frontend effort) or Vercel + Next.js (Better UX)",
+                "🗄️ **Database**: Supabase (PostgreSQL) or Firebase"
+            ],
+            "Founder_Sprint_Plan": [
+                {
+                    "week": "Week 1 (Prep & Basic Setup)",
+                    "tasks": [
+                        "Conduct short interviews with your target audience (min 5 people) about the product idea.",
+                        "Choose one of the recommended tools (Python (FastAPI or Streamlit)) and create an account.",
+                        "Buy a domain and set up a simple landing page."
+                    ]
+                },
+                {
+                    "week": "Week 2 (Core MVP Development)",
+                    "tasks": [
+                        "Focus feature: Single-page interface taking user input and returning an output via a simple LLM call (e.g., OpenAI API).",
+                        "Absolutely exclude all features we cut ('nice-to-have') from development.",
+                        "Don't aim for design perfection, focus solely on functionality."
+                    ]
+                },
+                {
+                    "week": "Week 3 (Testing & Early Validation)",
+                    "tasks": [
+                        "Test the product yourself and with 2-3 people from your circle.",
+                        "Fix critical bugs, just make the interface understandable.",
+                        "Add a manual payment or 'lead collection' step."
+                    ]
+                },
+                {
+                    "week": "Week 4 (Go-Live & Launch)",
+                    "tasks": [
+                        "Share your MVP on Reddit, Product Hunt, X, or industry LinkedIn groups.",
+                        "Set up a communication channel (Discord/WhatsApp) for instant feedback from early users.",
+                        "Decide whether to pivot or persevere based on reactions."
+                    ]
+                }
+            ]
+        },
+        "finance_analysis": {
+            "LTV_CAC_Estimate": "2.5x",
+            "LTV_CAC_Comment": "Close to industry standards (2.5x - 3x). May require improvement.",
+            "Capital_Intensity": "Medium",
+            "Investment_Score": 55,
+            "Red_Flags": [
+                "⚠️ Estimated LTV/CAC ratio (2.5x) is below the VC ideal of 3x. Unit economics might be challenging.",
+                "🚨 Overall Investment Score is low. Bootstrapping is recommended before seeking VC funding."
+            ]
+        }
+    }
+]

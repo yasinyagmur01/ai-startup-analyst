@@ -7,11 +7,11 @@ UI_TEXT = {
     "en": {
         "title": "AI Startup Analyst - Interview Phase",
         "questions": [
-            "What is your startup idea and what specific problem does it solve?",
-            "Who is your exact target niche market and user base initially?",
-            "Who are your 2-3 biggest competitors currently trying to solve this problem, and how will you differentiate?",
-            "How do you plan to make money from this startup? (SaaS, commission, marketplace, etc.)",
-            "If you wanted to test this product as quickly and cheaply as possible (without coding or with minimal code), what would be the first core feature you'd offer?"
+            {"question": "What is your startup idea and what specific problem does it solve?", "guide": "Example: 'We are building an autonomous accounting SaaS for SMBs focusing on ledger reconciliation...'"},
+            {"question": "Who is your exact target niche market and user base initially?", "guide": "Example: 'Our initial target is dental clinics in the US with 1-5 practitioners...'"},
+            {"question": "Who are your 2-3 biggest competitors currently trying to solve this problem, and how will you differentiate?", "guide": "Example: 'We compete with X and Y. We differentiate by having 10x faster integrations using our custom proxy API...'"},
+            {"question": "How do you plan to make money from this startup? (SaaS, commission, marketplace, etc.)", "guide": "Example: 'B2B SaaS with a tiered pricing model starting at $199/month...'"},
+            {"question": "If you wanted to test this product as quickly and cheaply as possible (without coding or with minimal code), what would be the first core feature you'd offer?", "guide": "Example: 'A simple dashboard that syncs Stripe transactions and flags anomalies...'"}
         ],
         "success_saved": "Thank you! Your data has been saved. Analysis agents are ready to run.",
         "btn_market": "📊 Start Market Analysis",
@@ -59,11 +59,11 @@ UI_TEXT = {
     "tr": {
         "title": "AI Startup Analisti - Mülakat Aşaması",
         "questions": [
-            "Startup fikriniz nedir ve hangi spesifik problemi çözüyor?",
-            "İlk etapta hedeflediğiniz niş pazar ve kullanıcı kitlesi tam olarak kimler?",
-            "Şu an bu problemi çözmeye çalışan en büyük 2-3 rakibiniz kim ve siz onlardan nasıl farklılaşacaksınız?",
-            "Bu girişimden nasıl para kazanmayı planlıyorsunuz? (SaaS, komisyon, pazaryeri vb.)",
-            "Bu ürünü en hızlı ve en ucuz şekilde (kodlamadan veya minimal kodla) test etmek isteseniz, sunacağınız ilk temel özellik ne olurdu?"
+            {"question": "Startup fikriniz nedir ve hangi spesifik problemi çözüyor?", "guide": "Örnek: 'KOBİ'ler için otonom muhasebe SaaS'ı geliştiriyoruz, defter mutabakatına odaklanıyoruz...'"},
+            {"question": "İlk etapta hedeflediğiniz niş pazar ve kullanıcı kitlesi tam olarak kimler?", "guide": "Örnek: 'İlk hedef kitlemiz, Türkiye'deki 1-5 hekimli diş klinikleridir...'"},
+            {"question": "Şu an bu problemi çözmeye çalışan en büyük 2-3 rakibiniz kim ve siz onlardan nasıl farklılaşacaksınız?", "guide": "Örnek: 'X ve Y ile rekabet ediyoruz. Farkımız, API'mizin 10 kat daha hızlı entegre olabilmesi...'"},
+            {"question": "Bu girişimden nasıl para kazanmayı planlıyorsunuz? (SaaS, komisyon, pazaryeri vb.)", "guide": "Örnek: 'Aylık 199$ başlangıç fiyatlı B2B SaaS modeliyle...'"},
+            {"question": "Bu ürünü en hızlı ve en ucuz şekilde (kodlamadan veya minimal kodla) test etmek isteseniz, sunacağınız ilk temel özellik ne olurdu?", "guide": "Örnek: 'Sadece Stripe işlemlerini senkronize edip anormallikleri işaretleyen basit bir panel...'"}
         ],
         "success_saved": "Teşekkürler! Verileriniz kaydedildi. Analiz ajanları çalışmaya hazır.",
         "btn_market": "📊 Pazar Analizini Başlat",
@@ -114,51 +114,54 @@ def get_lang():
     return st.session_state.get("lang_code", "en")
 
 
-def generate_interview_questions(pitch: str, lang: str = "en") -> list[str]:
+def generate_interview_questions(pitch: str, lang: str = "en") -> dict:
     """
     Calls Claude to classify the pitch domain and generate 3 brutal,
     deep-dive, industry-specific interview questions.
-
-    Domain rules:
-      - deep-tech / hardware / robotics  → R&D bottlenecks & technical feasibility
-      - e-commerce / physical products   → unit economics, margins, supply chain
-      - SaaS                             → churn, integration, retention
-      - other                            → go-to-market, moat, traction
     """
     if lang == "tr":
-        language_instruction = "Soruları Türkçe yaz."
-        fallback_intro = "Startup fikriniz için 3 sert mülakat sorusu:"
+        language_instruction = "Soruları ve Blueprint Guide örneklerini Türkçe yaz."
     else:
-        language_instruction = "Write the questions in English."
-        fallback_intro = "3 brutal interview questions for your startup idea:"
+        language_instruction = "Write the questions and Blueprint Guides in English."
 
     system_prompt = (
         "You are a world-class venture capital partner conducting a brutal, high-stakes startup interview. "
         "Your job is to stress-test every assumption the founder makes. "
         "You classify the startup domain from the one-sentence pitch and ask domain-specific deep-dive questions.\n\n"
-        "Domain classification rules:\n"
-        "  - deep-tech / hardware / robotics / biotech / defense → focus on R&D bottlenecks, IP moat, technical feasibility, regulatory path\n"
-        "  - e-commerce / physical products / retail / marketplace → focus on unit economics, gross margins, supply chain resilience, CAC vs LTV\n"
-        "  - SaaS / B2B software / platform → focus on churn drivers, integration complexity, switching costs, expansion revenue\n"
-        "  - other (consumer app, media, fintech, etc.) → focus on go-to-market moat, network effects, regulatory risk, monetization defensibility\n\n"
+        "The Guided Adversarial Framework:\n"
+        "When generating a question, you MUST generate a 2-part block:\n"
+        "1. The Squeeze Question: A sharp, analytical question targeting the core technical/operational bottleneck.\n"
+        "2. The Blueprint Guide: A highly contextual, technical guide showing the user exactly how a robust answer should look, filled with placeholders based on their vertical.\n\n"
+        "Dynamic Vertical Forking Examples:\n"
+        "- Hardware/IoT/Embedded: Focus on MCU choice, power management. Guide Output: \"Example: 'We are using STM32 MCUs communicating via SPI with a LoRaWAN module, utilizing a 3000mAh LiPo battery with sleep-mode optimization...'\"\n"
+        "- Pure SaaS/Software: Focus on data pipeline scalability, API dependency. Guide Output: \"Example: 'The backend is built on FastAPI with PostgreSQL, caching hot data via Redis, and using AWS Lambda for serverless computation...'\"\n"
+        "- Mechanical/Physical Toy: Focus on BOM, injection molding, wear-and-tear. Guide Output: \"Example: 'The outer shell will be manufactured via ABS injection molding, using high-torque brushless DC motors to prevent gear stripping...'\"\n\n"
+        "The Anti-Bullshit Radar Boundary:\n"
+        "If the user types buzzwords in their pitch (e.g. 'advanced AI', 'smart cloud', 'blockchain'), gracefully intercept by including a `buzzword_warning` in your JSON response.\n\n"
         f"{language_instruction}\n\n"
-        "Output ONLY a JSON array of exactly 3 strings, no keys, no markdown, no explanation. Example:\n"
-        '["Question 1?", "Question 2?", "Question 3?"]'
+        "Output ONLY a JSON object containing a `buzzword_warning` (or null) and a `questions` array. Example:\n"
+        '{\n'
+        '  "buzzword_warning": "You used a generic phrase. To help our VC Engine give you a high score, replace \'advanced AI\' with the specific model or algorithm framework you intend to deploy.",\n'
+        '  "questions": [\n'
+        '    {\n'
+        '      "question": "Data pipeline scalability question...",\n'
+        '      "guide": "Example: \'The backend is built on FastAPI with PostgreSQL...\'"\n'
+        '    }\n'
+        '  ]\n'
+        '}'
     )
 
     user_message = (
         f"Startup pitch: \"{pitch.strip()}\"\n\n"
-        "Classify this startup's domain and generate exactly 3 brutal, specific, deep-dive interview questions "
-        "that target the most critical failure points for this domain. "
-        "Make them uncomfortable. Each question must be answerable with concrete data, not vague ideas. "
-        "Return ONLY a JSON array of 3 question strings."
+        "Classify this startup's domain and generate exactly 3 brutal, specific, deep-dive interview questions (each with a Blueprint Guide). "
+        "Return ONLY the requested JSON object."
     )
 
     try:
         client = anthropic.Anthropic()
         message = client.messages.create(
             model="claude-opus-4-5",
-            max_tokens=600,
+            max_tokens=1000,
             system=system_prompt,
             messages=[{"role": "user", "content": user_message}]
         )
@@ -168,14 +171,18 @@ def generate_interview_questions(pitch: str, lang: str = "en") -> list[str]:
             raw = raw.split("```")[1]
             if raw.startswith("json"):
                 raw = raw[4:]
-        questions = json.loads(raw)
-        if isinstance(questions, list) and len(questions) == 3:
-            return questions
-    except Exception:
+        result = json.loads(raw)
+        if isinstance(result, dict) and "questions" in result:
+            return result
+    except Exception as e:
+        print("Fallback Exception:", e)
         pass  # Fall through to fallback
 
     # Fallback: return static questions for the language
-    return UI_TEXT[lang]["questions"][:3]
+    return {
+        "buzzword_warning": None,
+        "questions": UI_TEXT[lang]["questions"][:3]
+    }
 
 def init_session_state():
     if "lang_code" not in st.session_state:
@@ -185,6 +192,8 @@ def init_session_state():
         st.session_state.pitch_submitted = False
     if "dynamic_questions" not in st.session_state:
         st.session_state.dynamic_questions = []
+    if "buzzword_warning" not in st.session_state:
+        st.session_state.buzzword_warning = None
     if "answers" not in st.session_state:
         st.session_state.answers = []
     if "interview_complete" not in st.session_state:
@@ -199,7 +208,7 @@ def save_data(answers):
     data = {
         "pitch": pitch,
         **{
-            f"q{i+1}": {"question": questions_used[i], "answer": answers[i]}
+            f"q{i+1}": {"question": questions_used[i].get("question", str(questions_used[i])), "answer": answers[i]}
             for i in range(min(len(questions_used), len(answers)))
         }
     }
@@ -213,11 +222,6 @@ def main():
     
     if "lang_code" in st.session_state and st.session_state.lang_code != new_lang_code:
         st.session_state.lang_code = new_lang_code
-        # Optionally, update the last question in the chat history to match the new language
-        if len(st.session_state.chat_history) > 0 and st.session_state.chat_history[-1]["role"] == "assistant":
-            idx = st.session_state.current_question_idx
-            if idx < len(UI_TEXT[new_lang_code]["questions"]):
-                st.session_state.chat_history[-1]["content"] = UI_TEXT[new_lang_code]["questions"][idx]
 
     st.session_state.lang_code = new_lang_code
     init_session_state()
@@ -254,13 +258,10 @@ def main():
             else:
                 st.session_state.pitch_text = pitch_input.strip()
                 with st.spinner(generating_msg):
-                    questions = generate_interview_questions(pitch_input.strip(), lang)
-                st.session_state.dynamic_questions = questions
+                    result = generate_interview_questions(pitch_input.strip(), lang)
+                st.session_state.dynamic_questions = result.get("questions", UI_TEXT[lang]["questions"][:3])
+                st.session_state.buzzword_warning = result.get("buzzword_warning", None)
                 st.session_state.pitch_submitted = True
-                # Seed the chat history with the first dynamic question
-                st.session_state.chat_history = [
-                    {"role": "assistant", "content": questions[0]}
-                ]
                 st.rerun()
         return  # Don't render the rest until pitch is done
 
@@ -272,12 +273,19 @@ def main():
 
     if not st.session_state.interview_complete:
         st.markdown("---")
+        
+        if st.session_state.buzzword_warning:
+            st.warning(f"🚨 **Anti-Bullshit Radar:** {st.session_state.buzzword_warning}")
+            
         # Collect live draft answers from text areas
         draft_answers = []
         all_valid = True
 
-        for i, question in enumerate(active_questions):
-            st.markdown(f"**Q{i+1}. {question}**")
+        for i, q_obj in enumerate(active_questions):
+            question_text = q_obj.get("question", str(q_obj))
+            guide_text = q_obj.get("guide", "")
+            
+            st.markdown(f"**Q{i+1}. {question_text}**")
             ans = st.text_area(
                 label=f"answer_{i+1}",
                 label_visibility="collapsed",
@@ -286,6 +294,10 @@ def main():
                 placeholder=t["chat_placeholder"]
             )
             draft_answers.append(ans)
+            
+            if guide_text:
+                st.info(f"💡 {guide_text}")
+                
             # Per-field validation warning
             if ans.strip() and len(ans.strip()) < MIN_ANSWER_LEN:
                 st.warning(t["answer_too_short"])
