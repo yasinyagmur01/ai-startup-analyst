@@ -1,50 +1,38 @@
-# AI Startup Orchestrator
+# 🚀 Start-Up AI-R: Institutional VC-Grade Due Diligence & Market Intelligence Engine
 
-The **AI Startup Orchestrator** is an intelligent tool designed to streamline the early stages of startup planning and analysis. It acts as an interactive assistant, conducting a guided interview with the founder to gather essential details about the problem, target audience, competitors, business model, and Minimum Viable Product (MVP) idea. Once the initial data is collected, a suite of automated agents performs in-depth analysis to provide actionable insights.
+![Version](https://img.shields.io/badge/version-2.0.0-blueviolet?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![Framework](https://img.shields.io/badge/Agentic-Framework-orange?style=for-the-badge)
 
-## Features
+**Start-Up AI-R** is an AI-driven Venture Capital (VC) screening and market intelligence engine designed to move far beyond generic business summaries. It breaks away from boilerplate SaaS cliches to conduct institutional-grade due diligence across diverse startup verticals, including DeepTech, robotics, hardware, and e-commerce.
 
-- **Guided Founder Interview**: An interactive chat interface to gather structured information about your startup idea.
-- **Market Analysis Engine**: Evaluates the target niche and competitors using web research, estimating TAM, SAM, SOM, CAGR, and market density (Blue vs. Red Ocean).
-- **Financial Analysis Engine**: Projects key financial metrics including LTV/CAC ratio, capital intensity, an overall investability score, and highlights potential red flags.
-- **MVP Architecture Engine**: Generates a concrete 4-week founder sprint plan based on the startup's complexity, time-to-market, core features to focus on, and recommended tech stack.
-- **Bilingual Interface**: Seamlessly switch the UI between English and Turkish.
+---
 
-## Tech Stack
+## 🌟 Core Features (v2.0)
 
-- **Frontend/UI**: [Streamlit](https://streamlit.io/)
-- **Data Visualization**: [Plotly](https://plotly.com/)
-- **Search Integration**: [DuckDuckGo Search](https://pypi.org/project/duckduckgo-search/)
-- **Data Storage**: Local JSON storage (for MVP stage)
+### 1. 🎤 Dynamic Interview Framework & Input Boundary
+* **On-the-Fly Question Generation:** Replaces static, boring intake forms. The core engine analyzes the initial startup thesis and dynamically generates **3 rigorous, vertical-specific interview questions** on the fly.
+* **UI Validation Boundary:** Prevents superficial responses like "yes," "no," or "we will handle it." The interface enforces a strict minimum character threshold, locking the submission until the founder provides concrete operational strategies.
 
-## Installation
+### 2. 📊 Institutional VC-Grade Market Intelligence
+* **Strict Metric Enforcement:** Vague phrases like "rapidly growing market" are strictly banned. The engine calculates data-backed **TAM (Total Addressable Market)**, **SAM (Serviceable Addressable Market)**, and **SOM (Serviceable Obtainable Market)** metrics, citing mathematical assumptions or historical data sources for every figure.
+* **Geographic & Regulatory Deep-Dive:** Extracts critical legal and macroeconomic bottlenecks tailored to the selected country of operation (e.g., KVKK/monetary volatility for Turkey, GDPR/CE/MDR compliance for the EU).
 
-1. **Clone the repository** (if applicable) or navigate to the project directory:
-   ```bash
-   cd Start-Up-AI-R
-   ```
+### 3. 🛡️ Defensibility & Moat Architecture
+* Evaluates structural barriers to entry. The engine rigorously scores the startup’s defensibility and maps out how quickly an incumbent with $10M in venture backing could copy the core value proposition based on IP, algorithms, or supply chain locking.
 
-2. **Set up a virtual environment** (optional but recommended):
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows, use `.venv\Scripts\activate`
-   ```
+### 4. 📉 Unit Economics & Lethal Choke Points
+* **Cost Architecture:** Outlines **COGS (Cost of Goods Sold)** and **BOM (Bill of Materials) risks** for hardware/robotics projects, or **LTV:CAC and Payback Period benchmarks** for digital products.
+* **The Red Flag Directory:** Synthesizes exactly **3 brutal, vertical-specific kill-scenarios** where the startup faces high bankruptcy risk within the first 18 months.
 
-3. **Install the required dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 5. 💯 Investment Readiness Index (Scoring Engine)
+* Scores the venture across four distinct pillars (Market Fit, Tech Defensibility, Regulatory Safety, etc.) out of 100, outputting a weighted **VC Investment Index** with a 1-sentence analytical justification for every metric.
 
-4. **Run the application**:
-   ```bash
-   streamlit run app.py
-   ```
+---
 
-## Usage
+## 🏗️ System Architecture & Tech Stack
 
-1. Open the provided local URL (usually `http://localhost:8501`) in your browser.
-2. Select your preferred language (English or Turkish) from the sidebar.
-3. Answer the 5 core startup questions in the chat interface.
-4. Once completed, your data will be saved.
-5. Click on the respective buttons to run the **Market Analysis**, **Financial Analysis**, or **MVP Roadmap** generation.
-6. Review your personalized, data-driven startup dashboards.
+* **Frontend:** Streamlit (Bilingual UI, dynamic reactive input validation)
+* **Agentic Backend:** LangChain / CrewAI / Anthropic Claude API (Vertical-specific routing logic)
+* **Data Layer:** State persistence via `startup_data.json`
