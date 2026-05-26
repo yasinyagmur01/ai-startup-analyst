@@ -1,152 +1,213 @@
+"""
+finance_analyzer.py — Claude-Powered VC Financial Analysis Engine
+==================================================================
+Previous version used hardcoded if/else rules with zero AI calls.
+This version calls Claude API with institutional-grade benchmarks.
+"""
+
 import json
 import os
 import re
+import anthropic
+from datetime import datetime
 
-def get_system_prompt(lang="en"):
-    """
-    Returns the system prompt for the LLM based on the selected language.
-    Note: Currently not injected into an API call, but ready for future integration.
-    """
-    if lang == "tr":
-        return "Sen uzman bir finansal analistsin. Startup verilerini ve pazar analizini inceleyerek finansal metrikleri hesapla ve JSON döndür."
-    return "You are an expert financial analyst. Review the startup and market data to calculate financial metrics and return JSON."
 
-def analyze_finance(lang="en"):
+def _extract_tam(market_data: dict) -> str:
+    """Handles both new nested Market_Metrics format and old flat format."""
+    metrics = market_data.get("Market_Metrics", {})
+    if metrics:
+        return metrics.get("TAM", {}).get("value", "Unknown")
+    return market_data.get("TAM_Total_Addressable_Market",
+           market_data.get("TAM", "Unknown"))
+
+
+def _extract_density(market_data: dict) -> str:
+    """Handles both new nested Market_Metrics format and old flat format."""
+    metrics = market_data.get("Market_Metrics", {})
+    if metrics:
+        return metrics.get("Market_Density", "")
+    return market_data.get("Market_Density",
+           market_data.get("Market_Density_Pazar_Yogunlugu", ""))
+
+
+def _extract_cagr(market_data: dict) -> str:
+    """Extracts CAGR from either format."""
+    metrics = market_data.get("Market_Metrics", {})
+    if metrics:
+        return metrics.get("CAGR", {}).get("value", "Unknown")
+    return market_data.get("CAGR_Market_Growth_Rate",
+           market_data.get("CAGR_Pazar_Buyume_Orani", "Unknown"))
+
+
+def analyze_finance(lang: str = "en") -> dict:
     """
-    Reads startup_data.json and market_analysis.json to estimate:
-    - LTV/CAC Prediction
-    - Capital Intensity
-    - Investability Score
-    - Red Flags
-    Saves the results to finance_analysis.json.
+    Calls Claude API with startup data + market analysis to produce
+    institutional-grade financial projections.
+    Replaces the old hardcoded rule-based engine entirely.
     """
     startup_data_path = "data/startup_data.json"
     market_data_path = "data/market_analysis.json"
-    
-    if not os.path.exists(startup_data_path) or not os.path.exists(market_data_path):
-        err = "Veriler eksik. Lütfen mülakatı ve pazar analizini tamamlayın." if lang == "tr" else "Missing data. Please complete the interview and market analysis first."
+
+    if not os.path.exists(startup_data_path):
+        err = "Veri eksik. Lütfen mülakatı tamamlayın." if lang == "tr" else "Missing data. Please complete the interview first."
         return {"error": err, "hata": err}
-        
+
     with open(startup_data_path, "r", encoding="utf-8") as f:
         startup_data = json.load(f)
-        
-    with open(market_data_path, "r", encoding="utf-8") as f:
-        market_data = json.load(f)
-        
-    # Extract needed variables
-    business_model = startup_data.get("q4", {}).get("answer", "").lower()
-    mvp_approach = startup_data.get("q5", {}).get("answer", "").lower()
-    
-    tam_val = market_data.get("TAM_Total_Addressable_Market", "")
-    market_density = market_data.get("Market_Density", market_data.get("Market_Density_Pazar_Yogunlugu", ""))
-    
-    # 1. LTV/CAC Öngörüsü
-    ltv_cac_ratio = 2.5
-    if lang == "tr":
-        ltv_cac_comment = "Sektör standartlarına yakın (2.5x - 3x). İyileştirme gerekebilir."
-    else:
-        ltv_cac_comment = "Close to industry standards (2.5x - 3x). May require improvement."
-    
-    if "saas" in business_model or "abonelik" in business_model or "subscription" in business_model:
-        ltv_cac_ratio = 4.2
-        ltv_cac_comment = "SaaS ve abonelik modellerinde LTV yüksek olma eğilimindedir (Tahmini 4x+). Çok olumlu." if lang == "tr" else "SaaS and subscription models tend to have high LTV (Estimated 4x+). Very positive."
-    elif "komisyon" in business_model or "pazaryeri" in business_model or "marketplace" in business_model or "commission" in business_model:
-        ltv_cac_ratio = 1.8
-        ltv_cac_comment = "Pazaryeri modellerinde iki tarafı da edinmek zor olduğundan CAC yüksektir (Tahmini < 2x). Dikkat!" if lang == "tr" else "High CAC in marketplace models as both sides must be acquired (Estimated < 2x). Caution!"
-    elif "reklam" in business_model or "ads" in business_model:
-        ltv_cac_ratio = 2.0
-        ltv_cac_comment = "Reklam modellerinde hacim önemlidir, ilk etapta LTV/CAC düşük kalabilir." if lang == "tr" else "Volume is key in ad models, LTV/CAC might be low initially."
 
-    if "kırmızı" in market_density.lower() or "red" in market_density.lower():
-        ltv_cac_ratio -= 0.5
-        ltv_cac_comment += " Kırmızı okyanusta müşteri edinmek pahalıdır, CAC baskısı oluşacak." if lang == "tr" else " Customer acquisition is expensive in red oceans, creating CAC pressure."
-        
-    # 2. Sermaye Yoğunluğu (Capital Intensity)
-    if lang == "tr":
-        capital_intensity = "Orta (Medium)"
-        if any(word in mvp_approach for word in ["no code", "no-code", "ai", "yapay zeka", "bot", "manuel", "hızlı"]):
-            capital_intensity = "Düşük (Low) - Lean Startup yaklaşımına çok uygun, dış sermaye bağımlılığı az."
-        elif any(word in mvp_approach for word in ["donanım", "hardware", "fabrika", "üretim", "arge"]):
-            capital_intensity = "Yüksek (High) - Ürünü test etmek bile ciddi bir ön yatırım gerektiriyor."
-    else:
-        capital_intensity = "Medium"
-        if any(word in mvp_approach for word in ["no code", "no-code", "ai", "yapay zeka", "bot", "manuel", "hızlı", "fast"]):
-            capital_intensity = "Low - Very suitable for Lean Startup, low external capital dependency."
-        elif any(word in mvp_approach for word in ["donanım", "hardware", "fabrika", "üretim", "arge", "factory", "production", "r&d"]):
-            capital_intensity = "High - Even testing the product requires serious upfront investment."
-        
-    # 3. Yatırım Alabilirlik Skoru
-    score = 50
-    
-    # TAM Etkisi
-    if "B" in tam_val or "Billion" in tam_val:
-        score += 20 # Milyar dolarlık pazar
-    elif "T" in tam_val or "Trillion" in tam_val:
-        score += 25
-    else:
-        score += 5 # Daha küçük bir pazar
-        
-    # Density Etkisi
-    if "mavi" in market_density.lower() or "blue" in market_density.lower():
-        score += 15
-    elif "kırmızı" in market_density.lower() or "red" in market_density.lower():
-        score -= 10
-        
-    # Model Etkisi
-    if "saas" in business_model:
-        score += 10
-    if "Düşük" in capital_intensity or "Low" in capital_intensity:
-        score += 10
-    elif "Yüksek" in capital_intensity or "High" in capital_intensity:
-        score -= 5
-        
-    # Sınırlandırma
-    score = max(0, min(100, int(score)))
-    
-    # 4. Kırmızı Bayraklar (Red Flags)
-    red_flags = []
-    if lang == "tr":
-        if "kırmızı" in market_density.lower() or "red" in market_density.lower():
-            red_flags.append("🚨 Pazar çok dar veya aşırı rekabetçi. Pazar payı kapmak CAC (Müşteri Edinme) maliyetlerini patlatabilir.")
-        if ltv_cac_ratio < 3.0:
-            red_flags.append(f"⚠️ Tahmini LTV/CAC oranı ({ltv_cac_ratio:.1f}x) VC'lerin ideal gördüğü 3x'in altında. Birim ekonomisi (Unit Economics) zorlayıcı olabilir.")
-        if "pazaryeri" in business_model or "komisyon" in business_model or "marketplace" in business_model:
-            red_flags.append("⚠️ Pazaryeri iş modeli. 'Tavuk-yumurta' problemi nedeniyle her iki tarafı da sisteme katmak ciddi sermaye yakmayı (burn rate) gerektirecektir.")
-        if "Yüksek" in capital_intensity or "High" in capital_intensity:
-            red_flags.append("🚨 Donanım veya ağır Ar-Ge içeren süreç. Ürün-Pazar uyumunu test etmeden önce çok fazla para yakma riski var.")
-        if score < 60:
-            red_flags.append("🚨 Genel Yatırım Skoru düşük. VC turuna çıkmadan önce bootstrapping (öz sermaye ile büyüme) tavsiye edilir.")
-            
-        if not red_flags:
-            red_flags.append("✅ Belirgin bir kırmızı bayrak saptanmadı. Finansal temeller umut verici.")
-    else:
-        if "kırmızı" in market_density.lower() or "red" in market_density.lower():
-            red_flags.append("🚨 Market is too narrow or highly competitive. Gaining market share will skyrocket CAC.")
-        if ltv_cac_ratio < 3.0:
-            red_flags.append(f"⚠️ Estimated LTV/CAC ratio ({ltv_cac_ratio:.1f}x) is below the VC ideal of 3x. Unit economics might be challenging.")
-        if "pazaryeri" in business_model or "komisyon" in business_model or "marketplace" in business_model:
-            red_flags.append("⚠️ Marketplace business model. The 'chicken-egg' problem of acquiring both sides will require significant burn rate.")
-        if "Yüksek" in capital_intensity or "High" in capital_intensity:
-            red_flags.append("🚨 Process involves hardware or heavy R&D. High risk of burning too much cash before testing Product-Market Fit.")
-        if score < 60:
-            red_flags.append("🚨 Overall Investment Score is low. Bootstrapping is recommended before seeking VC funding.")
-            
-        if not red_flags:
-            red_flags.append("✅ No obvious red flags detected. Financial fundamentals are promising.")
+    market_data = {}
+    if os.path.exists(market_data_path):
+        with open(market_data_path, "r", encoding="utf-8") as f:
+            market_data = json.load(f)
 
-    analysis = {
-        "LTV_CAC_Estimate": f"{ltv_cac_ratio:.1f}x",
-        "LTV_CAC_Comment": ltv_cac_comment,
-        "Capital_Intensity": capital_intensity,
-        "Investment_Score": score,
-        "Red_Flags": red_flags
-    }
-    
+    current_date = datetime.now().strftime("%B %Y")
+    current_year = datetime.now().year
+
+    tam = _extract_tam(market_data)
+    density = _extract_density(market_data)
+    cagr = _extract_cagr(market_data)
+    choke_points = market_data.get("Choke_Points", [])
+    moat = market_data.get("Moat_Analysis", {})
+
+    lang_instruction = (
+        "Respond ENTIRELY in Turkish. All keys, labels, values, and explanations must be in Turkish."
+        if lang == "tr"
+        else "Respond ENTIRELY in English."
+    )
+
+    system_prompt = f"""You are a senior VC financial analyst conducting institutional due diligence in {current_year}.
+Today's date is {current_date}.
+
+BENCHMARK DATABASE ({current_year} standards — cite these explicitly):
+- B2B SaaS median LTV:CAC = 3.5:1 (top quartile = 5:1+, bottom quartile = 1.8:1)
+- Marketplace median LTV:CAC = 1.5:1 (two-sided acquisition doubles CAC)
+- B2C Consumer App median LTV:CAC = 1.8:1
+- Hardware startup gross margin target = 40-60% (commodity = 20-35%)
+- SaaS gross margin benchmark = 70-80%
+- Series A median revenue multiple ({current_year}) = 5-7x ARR (compressed from 2021 highs)
+- Average SaaS CAC payback period = 12-18 months (best-in-class = <12 months)
+- Seed-stage monthly burn benchmark = $30K-$80K (lean) / $80K-$200K (team-heavy)
+- Turkey-specific: CAC typically 40-60% lower than US for same vertical
+- Turkey-specific: LTV also lower due to purchasing power (~25-35% of US equivalent)
+- Turkey-specific: SaaS pricing power significantly lower, churn higher in SMB segment
+
+BANNED PHRASES (automatic failure if used):
+"potentially profitable", "promising", "could be successful", "has potential",
+"growing market", "exciting opportunity", "strong foundation"
+
+CRITICAL RULES:
+- Every numeric claim MUST cite the benchmark or formula used
+- LTV:CAC must be a specific ratio with reasoning, not a range
+- Investment score must have a 3-sentence mathematical justification
+- Red flags must be severity-ranked: CRITICAL / HIGH / MEDIUM
+- Death scenario must be the single most statistically likely failure mode
+
+{lang_instruction}
+
+Return ONLY valid JSON. No markdown, no explanation text, no code fences."""
+
+    user_prompt = f"""ANALYSIS DATE: {current_date}
+
+STARTUP DATA:
+{json.dumps(startup_data, ensure_ascii=False, indent=2)}
+
+MARKET CONTEXT (from market analysis):
+- TAM: {tam}
+- Market Density: {density}
+- CAGR: {cagr}
+- Moat Analysis: {json.dumps(moat, ensure_ascii=False)}
+- Known Kill Scenarios: {json.dumps(choke_points, ensure_ascii=False)}
+
+Produce financial analysis as this exact JSON structure:
+{{
+  "Investment_Score": <integer 0-100>,
+  "Score_Justification": "<3 sentences with mathematical reasoning citing benchmarks>",
+  "LTV_CAC_Estimate": "<specific ratio like '3.2:1'>",
+  "LTV_CAC_Comment": "<cite the benchmark used, explain why this startup hits above/below>",
+  "Payback_Period_Months": "<estimated months as integer>",
+  "Gross_Margin_Estimate": "<percentage range with reasoning>",
+  "Burn_Rate_Estimate": "<monthly USD estimate for seed stage with breakdown>",
+  "Capital_Intensity": "<Low / Medium / High with 18-month runway cost estimate in USD>",
+  "Red_Flags": [
+    "CRITICAL: <specific kill scenario with financial mechanism>",
+    "HIGH: <second risk with quantified impact>",
+    "MEDIUM: <third risk with mitigation cost estimate>"
+  ],
+  "Death_Scenario": "<single most statistically likely financial cause of failure within 12 months, be specific>",
+  "Funding_Recommendation": "<Bootstrap / Pre-seed / Seed / Series A — with reasoning>"
+}}"""
+
+    try:
+        client = anthropic.Anthropic()
+        message = client.messages.create(
+            model="claude-opus-4-5",
+            max_tokens=1500,
+            system=system_prompt,
+            messages=[{"role": "user", "content": user_prompt}]
+        )
+        raw = message.content[0].text.strip()
+        if raw.startswith("```"):
+            raw = re.sub(r"^```[a-z]*\n?", "", raw)
+            raw = re.sub(r"\n?```$", "", raw)
+        result = json.loads(raw)
+    except json.JSONDecodeError:
+        result = _fallback_finance(startup_data, market_data, lang)
+    except Exception as e:
+        result = {"error": str(e), "hata": str(e)}
+
     os.makedirs("data", exist_ok=True)
     with open("data/finance_analysis.json", "w", encoding="utf-8") as f:
-        json.dump(analysis, f, ensure_ascii=False, indent=4)
-        
-    return analysis
+        json.dump(result, f, ensure_ascii=False, indent=4)
+
+    return result
+
+
+def _fallback_finance(startup_data: dict, market_data: dict, lang: str) -> dict:
+    """Rule-based fallback only used when Claude API call fails."""
+    business_model = startup_data.get("q4", {}).get("answer", "").lower()
+    density = _extract_density(market_data)
+
+    if "saas" in business_model or "subscription" in business_model:
+        ltv_cac = "3.5:1"
+        score = 58
+    elif "marketplace" in business_model or "commission" in business_model:
+        ltv_cac = "1.5:1"
+        score = 42
+    else:
+        ltv_cac = "2.5:1"
+        score = 50
+
+    if "red" in density.lower() or "kırmızı" in density.lower():
+        score -= 10
+
+    if lang == "tr":
+        return {
+            "Investment_Score": score,
+            "Score_Justification": "API çağrısı başarısız oldu — kural tabanlı yedek sistem kullanıldı. Gerçek analiz için tekrar deneyin.",
+            "LTV_CAC_Estimate": ltv_cac,
+            "LTV_CAC_Comment": "Yedek sistem tahmini — Claude API ile doğrulanmadı.",
+            "Payback_Period_Months": 18,
+            "Gross_Margin_Estimate": "Bilinmiyor — API çağrısı gerekli",
+            "Burn_Rate_Estimate": "Bilinmiyor — API çağrısı gerekli",
+            "Capital_Intensity": "Orta (Medium)",
+            "Red_Flags": ["CRITICAL: API çağrısı başarısız — analiz eksik"],
+            "Death_Scenario": "Belirsiz — Claude API bağlantısını kontrol edin.",
+            "Funding_Recommendation": "Belirsiz"
+        }
+    return {
+        "Investment_Score": score,
+        "Score_Justification": "API call failed — rule-based fallback used. Retry for real analysis.",
+        "LTV_CAC_Estimate": ltv_cac,
+        "LTV_CAC_Comment": "Fallback estimate — not validated by Claude API.",
+        "Payback_Period_Months": 18,
+        "Gross_Margin_Estimate": "Unknown — API call required",
+        "Burn_Rate_Estimate": "Unknown — API call required",
+        "Capital_Intensity": "Medium",
+        "Red_Flags": ["CRITICAL: API call failed — analysis incomplete"],
+        "Death_Scenario": "Uncertain — check Claude API connection.",
+        "Funding_Recommendation": "Uncertain"
+    }
+
 
 if __name__ == "__main__":
     result = analyze_finance()

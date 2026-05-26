@@ -14,6 +14,7 @@ import json
 import os
 import re
 import anthropic
+from datetime import datetime
 
 try:
     from duckduckgo_search import DDGS
@@ -88,17 +89,21 @@ def _detect_country(text: str) -> str:
 
 def _build_search_queries(vertical: str, niche: str, country: str) -> list[str]:
     """
-    Construct institutional-grade search queries per VC research standards.
-    Prioritises PDF reports and authoritative databases.
+    DuckDuckGo-compatible queries. No filetype:, site:, or other
+    Google-only operators — they silently return zero results on DDG.
     """
+    from datetime import datetime
+    year = datetime.now().year
     base = f"{vertical} {niche}"
     queries = [
-        f"{base} market size report 2025 2026 filetype:pdf",
-        f"site:statista.com {base} {country} market revenue",
-        f"{base} TAM SAM SOM market research 2025 site:grandviewresearch.com OR site:mordorintelligence.com",
-        f"{base} CAGR compound annual growth rate 2024 2030 market forecast",
-        f"{base} competitor market share analysis {country} 2024",
-        f"{vertical} regulatory compliance {country} legal requirements 2024 2025",
+        f"{base} market size {year}",
+        f"{base} {country} market revenue {year}",
+        f"{base} total addressable market {year}",
+        f"{base} CAGR growth rate forecast {year}",
+        f"{base} startup funding {country} {year}",
+        f"{vertical} {country} regulatory requirements {year}",
+        f"{base} competitor market share {year}",
+        f"{base} industry report {year-1} {year}",
     ]
     return queries
 
@@ -119,6 +124,30 @@ def _run_searches(queries: list[str], max_per_query: int = 4) -> str:
         except Exception:
             continue
     return " ".join(corpus)
+
+def _search_competitors(competitors_text: str) -> dict:
+    """
+    Extract competitor names and search for their current status.
+    Returns dict of {competitor_name: latest_news_snippet}
+    """
+    if not DDGS:
+        return {}
+    
+    year = datetime.now().year
+    # Extract potential company names (capitalized words)
+    names = re.findall(r'\b[A-Z][a-zA-Z]+(?:\s[A-Z][a-zA-Z]+)?\b', competitors_text)
+    names = [n for n in names if len(n) > 3][:3]  # max 3 competitors
+    
+    results = {}
+    for name in names:
+        try:
+            with DDGS() as ddgs:
+                hits = list(ddgs.text(f"{name} startup funding {year} OR {year-1}", max_results=2))
+                if hits:
+                    results[name] = hits[0].get("body", "")[:200]
+        except:
+            pass
+    return results
 
 
 def _extract_money_figures(text: str) -> list[str]:
@@ -172,12 +201,24 @@ No markdown, no explanation text, no code fences. Pure JSON only.
 
 {lang_instruction}"""
 
-    user_prompt = f"""STARTUP BRIEF:
+    from datetime import datetime
+    current_date = datetime.now().strftime("%B %Y")
+    current_year = datetime.now().year
+    competitor_news = _search_competitors(competitors)
+
+    user_prompt = f"""ANALYSIS DATE: {current_date}. You are analyzing this startup as of {current_date}.
+All market data, competitor intelligence, and regulatory requirements must reflect {current_year}.
+If any figure in the search corpus is older than {current_year - 1}, label it explicitly as OUTDATED.
+
+STARTUP BRIEF:
 Pitch: {pitch}
 Target Niche & Geography: {niche}
 Competitors Mentioned: {competitors}
 Revenue Model: {revenue_model}
 MVP Plan: {mvp_answer}
+
+COMPETITOR RECENT NEWS (from web, treat as live intelligence):
+{json.dumps(competitor_news, ensure_ascii=False)}
 
 WEB RESEARCH CORPUS (raw snippets — use as evidence base):
 {search_corpus[:3000] if search_corpus else "[No live search data available — derive from first principles and state assumption clearly]"}

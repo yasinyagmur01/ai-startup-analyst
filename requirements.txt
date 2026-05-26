@@ -2,3 +2,5 @@ streamlit
 pydantic
 duckduckgo-search
 plotly
+anthropic
+reportlab
